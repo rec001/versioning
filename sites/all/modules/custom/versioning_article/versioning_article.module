@@ -1,0 +1,205 @@
+<?php
+/**
+* @file
+*   Callback function for customizing article.
+*/
+
+
+/**
+ * Implements hook_form_alter()
+ */
+
+function versioning_article_form_alter(&$form, &$form_state, $form_id) {
+  
+  if(arg(2) == 'clone'){
+		$defined = '';
+		$new_min = array('_none' => '- None -');
+    $new_max = array('_none' => '- None -');
+    
+    if (isset ($form['field_version'])) {
+		  $defined = $form['field_version'][LANGUAGE_NONE]['#default_value'];	
+		}
+    
+		if (isset($form['field_min_version'])) {
+			$options_min = $form['field_min_version'][LANGUAGE_NONE]['#options'];
+			unset($options_min['_none']);
+			
+			foreach ($options_min as $key => $value) {
+			 $new_min[$key] = get_numbers($value);
+			}
+			if ( sizeof($new_min) > 0){
+				$form['field_min_version'][LANGUAGE_NONE]['#options'] = $new_min; 
+			}
+			
+		}
+		
+		if (isset($form['field_max_version'])) {
+			$options_max = $form['field_max_version'][LANGUAGE_NONE]['#options'];
+			unset($options_max['_none']);
+			foreach ($options_max as $key => $value) {
+			 $new_max[$key] = get_numbers($value);
+			}
+			
+			if ( sizeof($new_max) > 0){
+				$form['field_max_version'][LANGUAGE_NONE]['#options'] = $new_max;  
+			}
+			
+		  // Set default value if Max Version number which is not None.
+		  if (trim($defined) == 'defined') {
+				if (!empty($form['field_max_version'][LANGUAGE_NONE]['#default_value'])) {
+					$max_default = $form['field_max_version'][LANGUAGE_NONE]['#default_value'][0];
+					$max_default_value = $new_max[$max_default];
+					$min_default = closer_min_by_max($new_min, $max_default_value);
+					$form['field_min_version'][LANGUAGE_NONE]['#default_value'][0] = $min_default;
+				} // Max version number that is None, Set Min version number field to the highest possible version number.
+				else {
+					$max_in_min = max($new_min);
+					$max_in_min_key = array_search($max_in_min, $new_min);
+					$form['field_min_version'][LANGUAGE_NONE]['#default_value'][0] = $max_in_min_key;
+				}
+			}
+		}
+		
+	}
+  
+  if ($form_id == 'raptor_article_node_form') {
+    $form['#submit'][] = 'versioning_article_submit';
+    if(arg(2) == 'clone'){
+      $form['#validate'][] = 'versioning_article_validate';
+		}
+  }
+}
+
+/**
+ * If the Version field is set to Defined and both Min Version and Max Version fields are set to something other than None, 
+ * then make sure that Max Version > Min Version.
+ */
+function versioning_article_validate($form, &$form_state){
+	if (isset($form_state['values']['field_version'])){
+	  $version = $form_state['values']['field_version'][LANGUAGE_NONE][0]['value'];
+  }
+  if (isset($form_state['values']['field_min_version'])) {
+	  $min_version = $form_state['values']['field_min_version'][LANGUAGE_NONE][0]['tid'];	
+	}
+	if (isset($form_state['values']['field_max_version'])){
+	  $max_version = $form_state['values']['field_max_version'][LANGUAGE_NONE][0]['tid'];
+	}
+	
+	if ($version == 'defined') {
+		if ($min_version == '') {
+			form_set_error('field_min_version', t('Min version cannot be null.'));
+		}
+		else if ( ( $min_version != '' && $max_version != '' ) && ($min_version >= $max_version)) {
+			form_set_error('field_min_version', t('Min version cannot be greater than Max version.'));
+		}
+	}
+}
+
+/**
+ *Adds a submit handler/function
+ */
+function versioning_article_submit($form, &$form_state) {
+	
+}
+
+/**
+ * Implements hook_node_insert()
+ */
+function versioning_article_node_insert($node) {
+	if (arg(2 != 'clone')) {
+    $node->field_base_article['und'][0]['target_id'] = $node->nid;
+    field_attach_update('node', $node);
+    
+    // if the new node is published and the Version field is set to Defined then 
+    // Take the Min Version of the new node. Set this value to be the Max version of the node that we are cloning. 
+    // Save the old node. This way the Min Version of the new node = Max Version of the old node. 
+    if (isset($node->clone_from_original_nid)) {
+		  $original_node = node_load($node->clone_from_original_nid);
+				if (isset ($node->field_version) && $node->status == 1){
+				$version = $node->field_version[$node->language][0]['value'];
+				$min = $node->field_min_version[$node->language][0]['tid'];
+				if ($version == 'defined') {
+					$original_node->field_max_version[$original_node->language][0]['tid'] = $min;
+					node_save($original_node);
+				}
+			}
+		}
+  }
+}
+
+
+/*
+ * function to convert number formate like 1.2.4 or 12.54.04 to 100200400 or 1200540040.
+ * @logic
+ *   Each place should have 3 digit after conversion, like 1 in 1.2.4 should has 100 and 2 should has 200 and so on.
+ *   First place digit will be always multiply by 100.
+ *   Except first, if strlen of digit is 1 then multiply it by 100, if strlen is 2 then multiply it by 10 
+ * @para string $number
+ *   number which is going to be converted.
+ * @return string $str_number
+ *   converted number
+ */
+function get_numbers($number){
+	$numbers = array();
+	$num_arr = array();
+	$str_number = '';
+	$strlen = strlen($number);
+	$numbers = explode(".", $number);
+	
+	if ( $strlen >= 5 && $strlen < 9) {
+		foreach ($numbers as $key => $num) {
+			if ($key == 0) {
+				$number = $num * 100;
+			}
+			else if (strlen($num) == 1){
+				$number = $num * 100;	
+			}
+			else {
+				$number = $num * 10;
+			}
+			$prefix = (strlen($number) == 2) ? '0' : (strlen($number) == 1) ? '00' : '';
+			$num_arr[] = (string) $prefix.$number;
+		}
+	}
+	if (sizeof($num_arr) > 0) {
+	  $str_number = implode("", $num_arr);	
+	}
+	return $str_number;  
+}
+
+
+/*
+ * function to get closest min number
+ * @para array $min_array
+ *   min version array
+ * @para string $number
+ *   max version number, going to be compare in min version array
+ * @return integar $key
+ *   array key as $key
+ */
+function closer_min_by_max($min_array, $number){
+	arsort($min_array);
+	foreach ($min_array as $key => $min){
+		if ($min < $number) return $key;
+	}  
+	return $key;
+}
+
+
+/*
+ * function to get closest max number
+ * @para array $max_array
+ *   max version array
+ * @para string $number
+ *   min version number, going to be compare in max version array
+ * @return integar $key
+ *   array key as $key
+ */
+function closer_max_by_min($max_array, $number){
+  asort($max_array);
+  foreach ($max_array as $key => $max){
+		if ($max > $number) return $max;
+	}
+	return $key;  
+}
+

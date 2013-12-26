@@ -1,0 +1,4 @@
+name = Versioning Article
+description = Create customized article.
+core = 7.x
+php = 5.2
