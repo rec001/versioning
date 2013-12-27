@@ -1,12 +1,12 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: neeravbm
  * Date: 12/23/13
  * Time: 7:17 PM
  */
-
-class Article implements IArticle {
+class aArticle implements IArticle {
 
   public function getMinVersion() {
     return '';

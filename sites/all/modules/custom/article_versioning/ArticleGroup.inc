@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: neeravbm
  * Date: 12/23/13
  * Time: 7:21 PM
  */
-
 class ArticleGroup implements IArticleGroup {
 
   private $versionArticleMap = array();
@@ -25,6 +25,7 @@ class ArticleGroup implements IArticleGroup {
   }
 
   public function getIArticles();
+
   public function setIArticles();
 
 }

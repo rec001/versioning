@@ -1,0 +1,16 @@
+{
+    "require": {
+        "behat/mink": "1.4@stable",
+        "behat/mink-sahi-driver": "*",
+        "behat/behat": "2.4.*@stable",
+        "behat/mink-extension": "*",
+        "shvetsgroup/parallelrunner": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.*"
+    }
+}

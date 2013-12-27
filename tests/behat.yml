@@ -1,0 +1,25 @@
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      sahi: ~
+      base_url: http://localhost/versioning/
+      javascript_session: sahi
+      files_path: assets
+      default_session: sahi
+  formatter:
+    name: html
+    parameter:
+      name: html
+      output_path: /home/vishal/Dropbox/sites/drupal_test/behat/test.html
+
+phantomjs:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://localhost/
+            selenium2:
+                wd_host: "http://localhost:8643/wd/hub"
+    formatter:
+      name: html
+      parameter:
+        name: html
+        output_path: /home/vishal/Dropbox/sites/drupal_test/behat/test.html
