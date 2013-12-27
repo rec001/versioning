@@ -5,11 +5,8 @@ Feature: 101-Create features for Versioning project
 
   @javascript @insulated
   Scenario: Authenticated User as admin role
-    Given I am on "/"
-    Then I fill in "username" as "admin"
-    Then I fill in password "password" as "1234"
-    Then I press button "Log in"
-    Then I should be redirected to "node"
+    Then I log on as "admin"
+    Then I should be redirected to "users/admin"
     Then I click "Content summary"
     Then I should be redirected to "content-summary"
     Then I click "Clone of Base Article point to the node"

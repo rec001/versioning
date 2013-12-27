@@ -11,10 +11,17 @@
 function versioning_article_form_alter(&$form, &$form_state, $form_id) {
 
   $args = arg();
-  if ($form_id == 'raptor_article_node_form' && !empty($args[2]) && $args[2] == 'clone') {
+  if ($form_id == 'raptor_article_node_form') {
     module_load_include('inc', 'versioning_article', 'ArticleForm.class');
     $articleForm = new ArticleForm($form);
-    $articleForm->alterArticleCloneForm();
+    if (!empty($args[2]) && $args[2] == 'clone') {
+      // Node is being cloned.
+      $articleForm->alterArticleForm(TRUE);
+    }
+    else {
+      // Node is being inserted, and not cloned.
+      $articleForm->alterArticleForm(FALSE);
+    }
     $form = $articleForm->getForm();
   }
 
@@ -48,6 +55,7 @@ function versioning_article_node_insert($node) {
     return;
   }
 
+  module_load_include('inc', 'versioning_article', 'Article.class');
   $article = new Article($node);
 
   $arg = arg();
@@ -59,14 +67,15 @@ function versioning_article_node_insert($node) {
 
     // Save the node. This shouldn't be a recursive call since we are updating the node and not inserting it.
     $node = $article->getArticle();
-    node_save($node);
+    field_attach_update('node', $node);
   }
 
   // If the new node is published and the Version field is set to Defined then
   // Take the Min Version of the new node. Set this value to be the Max version of the node that we are cloning.
   // Save the old node. This way the Min Version of the new node = Max Version of the old node.
   if (($original_nid = $article->getCloneFromOriginalArticleId()) && ($article->getVersionField() == 'defined') &&
-    $article->isPublished()) {
+    $article->isPublished()
+  ) {
 
     // Get the min version of the new node.
     $min_version_tid = $article->getMinVersionTermId();

@@ -43,7 +43,7 @@ class Article {
    *   Set the base article id.
    */
   public function setBaseArticleId($articleId) {
-    $this->article[LANGUAGE_NONE][0]['target_id'] = $articleId;
+    $this->article->field_base_article[LANGUAGE_NONE][0]['target_id'] = $articleId;
   }
 
 

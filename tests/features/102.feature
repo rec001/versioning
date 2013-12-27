@@ -6,10 +6,8 @@ Feature: 102-Create features for Versioning project
   @javascript @insulated
   Scenario: Authenticated User as admin role
     Given I am on "/"
-    Then I fill in "username" as "admin"
-    Then I fill in password "password" as "1234"
-    Then I press button "Log in"
-    Then I should be redirected to "node"
+    Then I log on as "admin"
+    Then I should be redirected to "users/admin"
     Then I click "Add content"
     Then I should be redirected to "node/add/raptor-article"
     Then I fill in "title" as "Base Article Max is Null"

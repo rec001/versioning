@@ -50,13 +50,16 @@ class ArticleForm {
 
   /**
    * Alters the form array.
+   *
+   * @param bool $clone
+   *   Whether the article is being cloned or not.
    */
-  public function alterArticleCloneForm() {
+  public function alterArticleForm($clone = FALSE) {
     // Set the default version to be "defined" since this is a node clone.
     $this->setDefaultVersion('defined');
 
     // Set the minimum version options.
-    $new_min_options = $this->setMinVersionOptions();
+    /*$new_min_options = $this->setMinVersionOptions();
 
     if (isset($this->form['field_max_version'])) {
       // Set the max version options.
@@ -64,9 +67,10 @@ class ArticleForm {
 
       // Set default value if Max Version number is not None.
       $this->setDefaultMinVersion($new_max_options, $new_min_options);
-    }
+    }*/
 
-    $this->addArticleCloneFormValidateHandlers();
+    $this->addArticleFormValidateHandlers($clone);
+    $this->addArticleFormSubmitHandlers($clone);
   }
 
 
@@ -85,7 +89,7 @@ class ArticleForm {
     module_load_include('inc', 'versioning_article', 'Version.class');
     foreach ($options as $key => $value) {
       $versionClass = new Version($value);
-      $new_options[$key] = $versionClass->getNumericVersion();
+      $new_options[$value] = $value;
     }
 
     return $new_options;
@@ -100,8 +104,14 @@ class ArticleForm {
    */
   public function validateArticleCloneForm() {
     $version = $this->getSubmittedVersion();
-    $min_version = $this->getSubmittedMinVersion();
-    $max_version = $this->getSubmittedMaxVersion();
+
+    module_load_include('inc', 'versioning_article', 'Version.class');
+
+    $min_version_class = new Version($this->getSubmittedMinVersion());
+    $min_version = $min_version_class->getNumericVersion();
+
+    $max_version_class = new Version($this->getSubmittedMaxVersion());
+    $max_version = $max_version_class->getNumericVersion();
 
     $errors = array();
     if ($version == 'defined') {
@@ -207,7 +217,9 @@ class ArticleForm {
    */
   private function getSubmittedMinVersion() {
     if (isset($this->form_state['values']['field_min_version'])) {
-      $min_version = $this->form_state['values']['field_min_version'][LANGUAGE_NONE][0]['tid'];
+      $min_version_tid = $this->form_state['values']['field_min_version'][LANGUAGE_NONE][0]['tid'];
+      $min_version_term = taxonomy_term_load($min_version_tid);
+      $min_version = $min_version_term->name;
       return $min_version;
     }
     return '';
@@ -221,7 +233,9 @@ class ArticleForm {
    */
   private function getSubmittedMaxVersion() {
     if (isset($this->form_state['values']['field_max_version'])) {
-      $max_version = $this->form_state['values']['field_max_version'][LANGUAGE_NONE][0]['tid'];
+      $max_version_tid = $this->form_state['values']['field_max_version'][LANGUAGE_NONE][0]['tid'];
+      $max_version_term = taxonomy_term_load($max_version_tid);
+      $max_version = $max_version_term->name;
       return $max_version;
     }
     return '';
@@ -230,7 +244,13 @@ class ArticleForm {
   /**
    * Add custom validate handlers to Article Clone form.
    */
-  private function addArticleCloneFormValidateHandlers() {
+  private function addArticleFormValidateHandlers($clone) {
     $this->form['#validate'][] = 'versioning_article_validate';
+  }
+
+  /**
+   * Add custom submit handlers to Article Clone form.
+   */
+  private function addArticleFormSubmitHandlers($clone) {
   }
 }

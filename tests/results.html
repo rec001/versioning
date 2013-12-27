@@ -346,36 +346,15 @@ I need to be able login and create content.<br />
 <ol>
 <li class="passed">
 <div class="step">
-<span class="keyword">Given </span>
-<span class="text">I am on "<strong class="passed_param">/</strong>"</span>
-<span class="path">FeatureContext::visit()</span>
+<span class="keyword">Then </span>
+<span class="text">I log on as "<strong class="passed_param">admin</strong>"</span>
+<span class="path">FeatureContext::iLogOnAs()</span>
 </div>
 </li>
 <li class="passed">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I fill in "<strong class="passed_param">username</strong>" as "<strong class="passed_param">admin</strong>"</span>
-<span class="path">FeatureContext::iFillInAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I fill in password "<strong class="passed_param">password</strong>" as "<strong class="passed_param">1234</strong>"</span>
-<span class="path">FeatureContext::iFillInPasswordAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I press button "<strong class="passed_param">Log in</strong>"</span>
-<span class="path">FeatureContext::iPressButton()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="passed_param">node</strong>"</span>
+<span class="text">I should be redirected to "<strong class="passed_param">users/admin</strong>"</span>
 <span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
 </div>
 </li>
@@ -396,66 +375,66 @@ I need to be able login and create content.<br />
 <li class="passed">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I fill in "<strong class="passed_param">title</strong>" as "<strong class="passed_param">Base Article point to the node</strong>"</span>
+<span class="text">I fill in "<strong class="passed_param">title</strong>" as "<strong class="passed_param">Base Article pointing to self</strong>"</span>
 <span class="path">FeatureContext::iFillInAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I select "<strong class="passed_param">1.3.6</strong>" from "<strong class="passed_param">Min Version</strong>"</span>
-<span class="path">FeatureContext::selectOption()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I select "<strong class="passed_param">2.5.4</strong>" from "<strong class="passed_param">Max Version</strong>"</span>
-<span class="path">FeatureContext::selectOption()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I select "<strong class="passed_param">Raptor</strong>" from "<strong class="passed_param">Platform</strong>"</span>
-<span class="path">FeatureContext::selectOption()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I press button "<strong class="passed_param">Save</strong>"</span>
-<span class="path">FeatureContext::iPressButton()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="passed_param">Content summary</strong>"</span>
-<span class="path">FeatureContext::iClick()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="passed_param">content-summary</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="passed_param">Base Article point to the node</strong>"</span>
-<span class="path">FeatureContext::iClick()</span>
 </div>
 </li>
 <li class="failed">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="failed_param">node/21/view</strong>"</span>
+<span class="text">I select "<strong class="failed_param">1.3.6</strong>" from "<strong class="failed_param">Min Version</strong>"</span>
+<span class="path">FeatureContext::selectOption()</span>
+</div>
+<pre class="backtrace">Select option with value|text &quot;1.3.6&quot; not found.</pre>
+</li>
+<li class="skipped">
+<div class="step">
+<span class="keyword">Then </span>
+<span class="text">I select "<strong class="skipped_param">2.5.4</strong>" from "<strong class="skipped_param">Max Version</strong>"</span>
+<span class="path">FeatureContext::selectOption()</span>
+</div>
+</li>
+<li class="skipped">
+<div class="step">
+<span class="keyword">Then </span>
+<span class="text">I select "<strong class="skipped_param">Raptor</strong>" from "<strong class="skipped_param">Platform</strong>"</span>
+<span class="path">FeatureContext::selectOption()</span>
+</div>
+</li>
+<li class="skipped">
+<div class="step">
+<span class="keyword">Then </span>
+<span class="text">I press button "<strong class="skipped_param">Save</strong>"</span>
+<span class="path">FeatureContext::iPressButton()</span>
+</div>
+</li>
+<li class="skipped">
+<div class="step">
+<span class="keyword">Then </span>
+<span class="text">I click "<strong class="skipped_param">Content summary</strong>"</span>
+<span class="path">FeatureContext::iClick()</span>
+</div>
+</li>
+<li class="skipped">
+<div class="step">
+<span class="keyword">Then </span>
+<span class="text">I should be redirected to "<strong class="skipped_param">content-summary</strong>"</span>
 <span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
 </div>
-<pre class="backtrace">Current page is &quot;/versioning/node/3/view&quot;, but &quot;/versioning/node/21/view&quot; expected.</pre>
+</li>
+<li class="skipped">
+<div class="step">
+<span class="keyword">Then </span>
+<span class="text">I click "<strong class="skipped_param">Base Article pointing to self</strong>"</span>
+<span class="path">FeatureContext::iClick()</span>
+</div>
+</li>
+<li class="skipped">
+<div class="step">
+<span class="keyword">Then </span>
+<span class="text">I should be redirected to "<strong class="skipped_param">raptor/article/base-article-pointing-self</strong>"</span>
+<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
+</div>
 </li>
 <li class="skipped">
 <div class="step">
@@ -464,301 +443,46 @@ I need to be able login and create content.<br />
 <span class="path">FeatureContext::assertPageContainsText()</span>
 </div>
 </li>
-</ol>
-</div>
-</div>
-<div class="feature">
-<h2>
-<span class="keyword">Feature: </span>
-<span class="title">101-Create features for Versioning project</span>
-</h2>
-<p>
-In order to check the Min Version number to be the version number just smaller than Max Version number<br />
-As a various different roles<br />
-I need to be able login and create node clone.<br />
-</p>
-
-<div class="scenario">
-<ul class="tags">
-<li>@javascript</li>
-<li>@insulated</li>
-</ul>
-<h3>
-<span class="keyword">Scenario: </span>
-<span class="title">Authenticated User as admin role</span>
-<span class="path">features/101.feature:7</span>
-</h3>
-<ol>
-<li class="passed">
-<div class="step">
-<span class="keyword">Given </span>
-<span class="text">I am on "<strong class="passed_param">/</strong>"</span>
-<span class="path">FeatureContext::visit()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I fill in "<strong class="passed_param">username</strong>" as "<strong class="passed_param">admin</strong>"</span>
-<span class="path">FeatureContext::iFillInAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I fill in password "<strong class="passed_param">password</strong>" as "<strong class="passed_param">1234</strong>"</span>
-<span class="path">FeatureContext::iFillInPasswordAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I press button "<strong class="passed_param">Log in</strong>"</span>
-<span class="path">FeatureContext::iPressButton()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="passed_param">node</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="passed_param">Content summary</strong>"</span>
-<span class="path">FeatureContext::iClick()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="passed_param">content-summary</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="failed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="failed_param">Clone of Base Article point to the node</strong>"</span>
-<span class="path">FeatureContext::iClick()</span>
-</div>
-<pre class="backtrace">Link with id|title|alt|text &quot;Clone of Base Article point to the node&quot; not found.</pre>
-</li>
 <li class="skipped">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="skipped_param">node/22/view</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="skipped">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="skipped_param">Clone</strong>"</span>
+<span class="text">I click "<strong class="skipped_param">Base Article pointing to self</strong>"</span>
 <span class="path">FeatureContext::iClick()</span>
 </div>
 </li>
 <li class="skipped">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="skipped_param">node/22/clone/confirm</strong>"</span>
+<span class="text">I should be redirected to "<strong class="skipped_param">raptor/article/base-article-pointing-self</strong>"</span>
 <span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
 </div>
 </li>
 <li class="skipped">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I select "<strong class="skipped_param">000100200</strong>" from "<strong class="skipped_param">Max Version</strong>"</span>
-<span class="path">FeatureContext::selectOption()</span>
+<span class="text">I click "<strong class="skipped_param">Edit</strong>"</span>
+<span class="path">FeatureContext::iClick()</span>
 </div>
 </li>
 <li class="skipped">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I press button "<strong class="skipped_param">Save</strong>"</span>
+<span class="text">I press button "<strong class="skipped_param">Delete</strong>"</span>
 <span class="path">FeatureContext::iPressButton()</span>
 </div>
 </li>
 <li class="skipped">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I should see "<strong class="skipped_param"> Min version cannot be greater than Max version.</strong>"</span>
-<span class="path">FeatureContext::assertPageContainsText()</span>
-</div>
-</li>
-<li class="skipped">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I select "<strong class="skipped_param">- None -</strong>" from "<strong class="skipped_param">Min Version</strong>"</span>
-<span class="path">FeatureContext::selectOption()</span>
-</div>
-</li>
-<li class="skipped">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I press button "<strong class="skipped_param">Save</strong>"</span>
+<span class="text">I press button "<strong class="skipped_param">Delete</strong>"</span>
 <span class="path">FeatureContext::iPressButton()</span>
 </div>
 </li>
 <li class="skipped">
 <div class="step">
 <span class="keyword">Then </span>
-<span class="text">I should see "<strong class="skipped_param"> Min version cannot be null.</strong>"</span>
-<span class="path">FeatureContext::assertPageContainsText()</span>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="feature">
-<h2>
-<span class="keyword">Feature: </span>
-<span class="title">102-Create features for Versioning project</span>
-</h2>
-<p>
-In order to check if Max version number that is None, set Min version number field to the highest possible version number<br />
-As a various different roles<br />
-I need to be able login and create node clone.<br />
-</p>
-
-<div class="scenario">
-<ul class="tags">
-<li>@javascript</li>
-<li>@insulated</li>
-</ul>
-<h3>
-<span class="keyword">Scenario: </span>
-<span class="title">Authenticated User as admin role</span>
-<span class="path">features/102.feature:7</span>
-</h3>
-<ol>
-<li class="passed">
-<div class="step">
-<span class="keyword">Given </span>
-<span class="text">I am on "<strong class="passed_param">/</strong>"</span>
-<span class="path">FeatureContext::visit()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I fill in "<strong class="passed_param">username</strong>" as "<strong class="passed_param">admin</strong>"</span>
-<span class="path">FeatureContext::iFillInAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I fill in password "<strong class="passed_param">password</strong>" as "<strong class="passed_param">1234</strong>"</span>
-<span class="path">FeatureContext::iFillInPasswordAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I press button "<strong class="passed_param">Log in</strong>"</span>
-<span class="path">FeatureContext::iPressButton()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="passed_param">node</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="passed_param">Add content</strong>"</span>
+<span class="text">I click "<strong class="skipped_param">Log out</strong>"</span>
 <span class="path">FeatureContext::iClick()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="passed_param">node/add/raptor-article</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I fill in "<strong class="passed_param">title</strong>" as "<strong class="passed_param">Base Article Max is Null</strong>"</span>
-<span class="path">FeatureContext::iFillInAs()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I select "<strong class="passed_param">1.3.6</strong>" from "<strong class="passed_param">Min Version</strong>"</span>
-<span class="path">FeatureContext::selectOption()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I select "<strong class="passed_param">Raptor</strong>" from "<strong class="passed_param">Platform</strong>"</span>
-<span class="path">FeatureContext::selectOption()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I press button "<strong class="passed_param">Save</strong>"</span>
-<span class="path">FeatureContext::iPressButton()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="passed_param">Content summary</strong>"</span>
-<span class="path">FeatureContext::iClick()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="passed_param">content-summary</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="passed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="passed_param">Base Article Max is Null</strong>"</span>
-<span class="path">FeatureContext::iClick()</span>
-</div>
-</li>
-<li class="failed">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="failed_param">node/30/view</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-<pre class="backtrace">Current page is &quot;/versioning/node/4/view&quot;, but &quot;/versioning/node/30/view&quot; expected.</pre>
-</li>
-<li class="skipped">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I click "<strong class="skipped_param">Clone</strong>"</span>
-<span class="path">FeatureContext::iClick()</span>
-</div>
-</li>
-<li class="skipped">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should be redirected to "<strong class="skipped_param">node/30/clone/confirm</strong>"</span>
-<span class="path">FeatureContext::iShouldBeRedirectedTo()</span>
-</div>
-</li>
-<li class="skipped">
-<div class="step">
-<span class="keyword">Then </span>
-<span class="text">I should see "<strong class="skipped_param">Min Version</strong>"</span>
-<span class="path">FeatureContext::assertPageContainsText()</span>
 </div>
 </li>
 </ol>
@@ -767,13 +491,13 @@ I need to be able login and create node clone.<br />
 <div class="summary failed">
 <div class="counters">
 <p class="scenarios">
-3 scenarios (<strong class="failed">3 failed</strong>)
+1 scenario (<strong class="failed">1 failed</strong>)
 </p>
 <p class="steps">
-52 steps (<strong class="passed">36 passed</strong>, <strong class="skipped">13 skipped</strong>, <strong class="failed">3 failed</strong>)
+20 steps (<strong class="passed">5 passed</strong>, <strong class="skipped">14 skipped</strong>, <strong class="failed">1 failed</strong>)
 </p>
 <p class="time">
-1m59.058s
+0m9.622s
 </p>
 </div>
 <div class="switchers">
