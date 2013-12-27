@@ -4,15 +4,11 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33d51094-ada8-441d-bdb8-ee90e520c4e5" name="Default" comment="Fixing the code.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/features/100.feature" afterPath="$PROJECT_DIR$/tests/features/100.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/features/101.feature" afterPath="$PROJECT_DIR$/tests/features/101.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/features/102.feature" afterPath="$PROJECT_DIR$/tests/features/102.feature" />
+    <list default="true" id="33d51094-ada8-441d-bdb8-ee90e520c4e5" name="Default" comment="Reformatting code.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/features/bootstrap/FeatureContext.php" afterPath="$PROJECT_DIR$/tests/features/bootstrap/FeatureContext.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/results.html" afterPath="$PROJECT_DIR$/tests/results.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -65,7 +61,7 @@
       <file leaf-file-name="versioning_article.module" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="22" selection-start="2502" selection-end="2502" vertical-scroll-proportion="-48.125" vertical-offset="0" max-vertical-offset="1440">
+            <state line="124" column="1" selection-start="4155" selection-end="4155" vertical-scroll-proportion="-18.0" vertical-offset="1383" max-vertical-offset="1905">
               <folding />
             </state>
           </provider>
@@ -83,8 +79,10 @@
       <file leaf-file-name="Article.class.inc" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="4" selection-start="696" selection-end="696" vertical-scroll-proportion="11.833333" vertical-offset="809" max-vertical-offset="2160">
-              <folding />
+            <state line="58" column="0" selection-start="1067" selection-end="1067" vertical-scroll-proportion="11.833333" vertical-offset="1079" max-vertical-offset="2445">
+              <folding>
+                <element signature="e#7#92#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,7 +90,7 @@
       <file leaf-file-name="ArticleForm.class.inc" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="244" column="25" selection-start="7050" selection-end="7050" vertical-scroll-proportion="0.95566505" vertical-offset="3272" max-vertical-offset="3915">
+            <state line="251" column="42" selection-start="7731" selection-end="7731" vertical-scroll-proportion="0.36945814" vertical-offset="3615" max-vertical-offset="4185">
               <folding />
             </state>
           </provider>
@@ -129,9 +127,9 @@
         <option value="$PROJECT_DIR$/tests/features/101.feature" />
         <option value="$PROJECT_DIR$/tests/features/102.feature" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module" />
         <option value="$PROJECT_DIR$/tests/features/100.feature" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module" />
       </list>
     </option>
   </component>
@@ -267,6 +265,116 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning_article" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="versioning" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -373,11 +481,16 @@
       <created>1387853680153</created>
       <updated>1387853680153</updated>
     </task>
+    <task id="LOCAL-00001" summary="Fixing the code.">
+      <created>1388120988575</created>
+      <updated>1388120988575</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="790" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -387,7 +500,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -414,7 +527,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Fixing the code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing the code." />
+    <MESSAGE value="Reformatting code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformatting code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -432,7 +546,9 @@
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="4" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="2235">
-          <folding />
+          <folding>
+            <element signature="e#7#92#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -484,7 +600,9 @@
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="8" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="2235">
-          <folding />
+          <folding>
+            <element signature="e#7#92#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -548,7 +666,9 @@
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="8" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="2235">
-          <folding />
+          <folding>
+            <element signature="e#7#92#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -673,7 +793,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/102.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="37" selection-start="495" selection-end="495" vertical-scroll-proportion="0.38106236" vertical-offset="0" max-vertical-offset="465" />
+        <state line="11" column="37" selection-start="495" selection-end="495" vertical-scroll-proportion="0.38106236" vertical-offset="0" max-vertical-offset="465">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/bootstrap/FeatureContext.php">
@@ -701,8 +823,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="4" selection-start="696" selection-end="696" vertical-scroll-proportion="11.833333" vertical-offset="809" max-vertical-offset="2160">
-          <folding />
+        <state line="58" column="0" selection-start="1067" selection-end="1067" vertical-scroll-proportion="11.833333" vertical-offset="1079" max-vertical-offset="2445">
+          <folding>
+            <element signature="e#7#92#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -720,13 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="22" selection-start="2502" selection-end="2502" vertical-scroll-proportion="-48.125" vertical-offset="0" max-vertical-offset="1440">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/100.feature">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="20" selection-start="827" selection-end="827" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="510">
@@ -734,9 +851,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="1" selection-start="4155" selection-end="4155" vertical-scroll-proportion="-18.0" vertical-offset="1383" max-vertical-offset="1905">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="25" selection-start="7050" selection-end="7050" vertical-scroll-proportion="0.95566505" vertical-offset="3272" max-vertical-offset="3915">
+        <state line="251" column="42" selection-start="7731" selection-end="7731" vertical-scroll-proportion="0.36945814" vertical-offset="3615" max-vertical-offset="4185">
           <folding />
         </state>
       </provider>

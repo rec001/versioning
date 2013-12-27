@@ -4,7 +4,7 @@
  *   Callback function for customizing article.
  */
 
-function versioning_article_init(){
+function versioning_article_init() {
   //getBaseArticleList(71);	
 }
 
@@ -12,7 +12,7 @@ function versioning_article_init(){
  * Implements hook_form_alter().
  */
 function versioning_article_form_alter(&$form, &$form_state, $form_id) {
-  
+
   $args = arg();
   if ($form_id == 'raptor_article_node_form') {
     module_load_include('inc', 'versioning_article', 'ArticleForm.class');
@@ -38,7 +38,7 @@ function versioning_article_form_alter(&$form, &$form_state, $form_id) {
  * None, then make sure that Max Version > Min Version.
  */
 function versioning_article_validate($form, &$form_state) {
-	module_load_include('inc', 'versioning_article', 'ArticleForm.class');
+  module_load_include('inc', 'versioning_article', 'ArticleForm.class');
   $articleForm = new ArticleForm($form, $form_state);
   $errors = $articleForm->validateArticleCloneForm();
   $form_state = $articleForm->getFormState();
@@ -98,32 +98,28 @@ function versioning_article_node_insert($node) {
 
 /**
  * Implements hook_node_validate().
- * 1) If the Version field is set to Global, then get the base article id. 
- * 2) If the base article id is not empty and is not the same as current node id, then get all the other nodes with the same base article id. 
+ * 1) If the Version field is set to Global, then get the base article id.
+ * 2) If the base article id is not empty and is not the same as current node id, then get all the other nodes with the same base article id.
  * 3) If any of these nodes returned in step 2 has Version field set to "Global", then give an error that "Article
  */
 function versioning_article_node_validate($node, $form, &$form_state) {
   if ($node->type != 'raptor_article') {
     return;
   }
-  
+
   module_load_include('inc', 'versioning_article', 'Article.class');
   $article = new Article($node);
-  
-  if ( $article->getVersionField() == 'global') {
-		if ($article->getBaseArticleId() && $article->getBaseArticleId() != $node->nid) {
-			 $base_article_list = $article->getBaseArticleNodeList();
-			 if (sizeof ($base_article_list) > 0) {
-				 foreach ($base_article_list as $article_list) {
-					  if ($article_list->field_field_version[0]['raw']['value'] == 'global') {
-							  form_set_error('field_version', t('Article is valid for all the versions. Do you want to edit it instead?'));
-							} 
-					} 
-			 }
-		}
+
+  if ($article->getVersionField() == 'global') {
+    if ($article->getBaseArticleId() && $article->getBaseArticleId() != $node->nid) {
+      $base_article_list = $article->getBaseArticleNodeList();
+      if (sizeof($base_article_list) > 0) {
+        foreach ($base_article_list as $article_list) {
+          if ($article_list->field_field_version[0]['raw']['value'] == 'global') {
+            form_set_error('field_version', t('Article is valid for all the versions. Do you want to edit it instead?'));
+          }
+        }
+      }
+    }
   }
 }
-
-
-
-

@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: neeravbm
  * Date: 12/26/13
  * Time: 10:31 AM
  */
-
 class Article {
 
   /**
@@ -127,7 +127,7 @@ class Article {
    *   Term id to be set.
    */
   public function setMaxVersionTermId($max_version_tid) {
-	  $this->article->field_max_version[LANGUAGE_NONE][0]['tid'] = $max_version_tid;
+    $this->article->field_max_version[LANGUAGE_NONE][0]['tid'] = $max_version_tid;
   }
 
 
@@ -141,22 +141,22 @@ class Article {
   public function getCloneFromOriginalArticleId() {
     return (isset($this->article->clone_from_original_nid) ? $this->article->clone_from_original_nid : '');
   }
-  
+
   /**
    * Function to get a list of all node which have same base article.
    *
    * @return mixed $result
    *   an associative array contains nid, node_title, and field_field_version
    */
-  public function getBaseArticleNodeList(){
-		$nid = $this->article->nid;
-		$view = views_get_view('raptor_article');
-		$view->set_display('block');
-		$view->set_arguments(array($nid));
-		$view->render();
-		$view->pre_execute();
-		$view->execute();
-	 return $result = $view->result;
-	}
-	
+  public function getBaseArticleNodeList() {
+    $nid = $this->article->nid;
+    $view = views_get_view('raptor_article');
+    $view->set_display('block');
+    $view->set_arguments(array($nid));
+    $view->render();
+    $view->pre_execute();
+    $view->execute();
+    return $result = $view->result;
+  }
+
 }

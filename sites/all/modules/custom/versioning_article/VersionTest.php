@@ -9,7 +9,7 @@
 require_once 'PHPUnit/Autoload.php';
 define('DRUPAL_ROOT', getcwd());
 require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
-require_once DRUPAL_ROOT .'/sites/all/modules/custom/versioning_article/Version.class.inc';
+require_once DRUPAL_ROOT . '/sites/all/modules/custom/versioning_article/Version.class.inc';
 drupal_override_server_variables();
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
