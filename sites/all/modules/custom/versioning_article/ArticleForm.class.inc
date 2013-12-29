@@ -57,18 +57,18 @@ class ArticleForm {
   public function alterArticleForm($clone = FALSE) {
     // Set the default version to be "defined" since this is a node clone.
     $this->setDefaultVersion('defined');
+    if ($clone) {
+      // Set the minimum version options.
+      $new_min_options = $this->setMinVersionOptions();
 
-    // Set the minimum version options.
-    /*$new_min_options = $this->setMinVersionOptions();
+      if (isset($this->form['field_max_version'])) {
+        // Set the max version options.
+        $new_max_options = $this->setMaxVersionOptions();
 
-    if (isset($this->form['field_max_version'])) {
-      // Set the max version options.
-      $new_max_options = $this->setMaxVersionOptions();
-
-      // Set default value if Max Version number is not None.
-      $this->setDefaultMinVersion($new_max_options, $new_min_options);
-    }*/
-
+        // Set default value if Max Version number is not None.
+        $this->setDefaultMinVersion($new_max_options, $new_min_options);
+      }
+    }
     $this->addArticleFormValidateHandlers($clone);
     $this->addArticleFormSubmitHandlers($clone);
   }
@@ -89,7 +89,8 @@ class ArticleForm {
     module_load_include('inc', 'versioning_article', 'Version.class');
     foreach ($options as $key => $value) {
       $versionClass = new Version($value);
-      $new_options[$value] = $value;
+      $value = $versionClass->getNumericVersion();
+      $new_options[$key] = $value;
     }
 
     return $new_options;
@@ -104,7 +105,6 @@ class ArticleForm {
    */
   public function validateArticleCloneForm() {
     $version = $this->getSubmittedVersion();
-
     module_load_include('inc', 'versioning_article', 'Version.class');
 
     $min_version_class = new Version($this->getSubmittedMinVersion());
@@ -118,8 +118,16 @@ class ArticleForm {
       if ($min_version == '') {
         $errors[] = array('field_min_version', t('Min version cannot be None.'));
       }
-      elseif (($min_version != '' && $max_version != '') && ($min_version >= $max_version)) {
+      elseif (($min_version != '' && $max_version != '') && ($min_version > $max_version)) {
         $errors[] = array('field_min_version', t('Min version cannot be greater than Max version.'));
+      }
+      elseif (($min_version != '' && $max_version != '') && ($min_version == $max_version)) {
+        $errors[] = array('field_min_version', t('Min version cannot be equal to Max version.'));
+      }
+    }
+    else {
+      if ($version == 'global') {
+
       }
     }
 
@@ -147,7 +155,7 @@ class ArticleForm {
       $options = $this->getVersionOptions($this->form['field_min_version'][LANGUAGE_NONE]['#options']);
       if (sizeof($options)) {
         $new_min_options = $options;
-        $this->form['field_min_version'][LANGUAGE_NONE]['#options'] = $new_min_options;
+        $this->form['field_min_version'][LANGUAGE_NONE]['#options'] = array('_none' => '- None -') + $new_min_options;
         return $new_min_options;
       }
     }
@@ -164,7 +172,7 @@ class ArticleForm {
     $options = $this->getVersionOptions($this->form['field_max_version'][LANGUAGE_NONE]['#options']);
     if (sizeof($options)) {
       $new_max_options = $options;
-      $this->form['field_max_version'][LANGUAGE_NONE]['#options'] = $new_max_options;
+      $this->form['field_max_version'][LANGUAGE_NONE]['#options'] = array('_none' => '- None -') + $new_max_options;
       return $new_max_options;
     }
     return array('_none' => '- None -');
@@ -181,6 +189,7 @@ class ArticleForm {
   private function setDefaultMinVersion($new_max_options, $new_min_options) {
     if (!empty($this->form['field_max_version'][LANGUAGE_NONE]['#default_value'])) {
       $max_default = $this->form['field_max_version'][LANGUAGE_NONE]['#default_value'][0];
+      $max_version_term = taxonomy_term_load($max_default);
       $max_default_value = $new_max_options[$max_default];
 
       $versionClass = new Version($max_default_value);
@@ -216,13 +225,16 @@ class ArticleForm {
    *   Minimum version selected by the user. Blank if user did not select anything.
    */
   private function getSubmittedMinVersion() {
-    if (isset($this->form_state['values']['field_min_version'])) {
+    $min_version = '';
+    if (isset($this->form_state['values']['field_min_version']) && !empty($this->form_state['values']['field_min_version'][LANGUAGE_NONE][0])) {
       $min_version_tid = $this->form_state['values']['field_min_version'][LANGUAGE_NONE][0]['tid'];
       $min_version_term = taxonomy_term_load($min_version_tid);
-      $min_version = $min_version_term->name;
+      if (is_object($min_version_term)) {
+        $min_version = $min_version_term->name;
+      }
       return $min_version;
     }
-    return '';
+    return $min_version;
   }
 
   /**
@@ -232,20 +244,25 @@ class ArticleForm {
    *   Maximum version selected by the user. Blank if user did not select anything.
    */
   private function getSubmittedMaxVersion() {
-    if (isset($this->form_state['values']['field_max_version'])) {
+    $max_version = '';
+    if (isset($this->form_state['values']['field_max_version']) && !empty($this->form_state['values']['field_max_version'][LANGUAGE_NONE][0])) {
       $max_version_tid = $this->form_state['values']['field_max_version'][LANGUAGE_NONE][0]['tid'];
       $max_version_term = taxonomy_term_load($max_version_tid);
-      $max_version = $max_version_term->name;
+      if (is_object($max_version_term)) {
+        $max_version = $max_version_term->name;
+      }
       return $max_version;
     }
-    return '';
+    return $max_version;
   }
 
   /**
    * Add custom validate handlers to Article Clone form.
    */
   private function addArticleFormValidateHandlers($clone) {
-    $this->form['#validate'][] = 'versioning_article_validate';
+    if ($clone) {
+      $this->form['#validate'][] = 'versioning_article_validate';
+    }
   }
 
   /**
