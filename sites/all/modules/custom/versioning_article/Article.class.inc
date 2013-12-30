@@ -383,8 +383,10 @@ class Article {
 				}
 			}
     }
-    return '';
-	}
+    
+	 }
+	 return '';
+ }
 	
 	
 }
