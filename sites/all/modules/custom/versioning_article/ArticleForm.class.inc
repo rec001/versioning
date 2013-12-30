@@ -269,5 +269,6 @@ class ArticleForm {
    * Add custom submit handlers to Article Clone form.
    */
   private function addArticleFormSubmitHandlers($clone) {
+		 $this->form['actions']['submit']['#submit'][] = 'versioning_article_submithandler';
   }
 }
