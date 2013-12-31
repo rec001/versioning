@@ -4,7 +4,7 @@ Feature: 104-Create features for Versioning project
   I need to be able login and check not show the node that we are viewing in this list.
 
   @javascript @insulated
-  Scenario: Authenticated User as admin, raptor admin and raptor editor role
+  Scenario: Authenticated User as admin role
     Given I am on "/"
     Then I log on as "admin"
     Then I should be redirected to "users/admin"
@@ -29,6 +29,9 @@ Feature: 104-Create features for Versioning project
     Then I should be redirected to "raptor/article/base-article-pointing-self"
     Then I should see "Raptor Articles"
     Then I click "Log out"
+  @javascript @insulated
+  Scenario: Authenticated User as raptor editor role
+    Given I am on "user/login"
     Then I fill in "username" as "raptor.editor"
     Then I fill in password "password" as "1234"
     Then I press button "Log in"
@@ -46,6 +49,9 @@ Feature: 104-Create features for Versioning project
     Then I should be redirected to "raptor/article/base-article-pointing-self"
     Then I should see "Raptor Articles"
     Then I click "Log out"
+  @javascript @insulated
+  Scenario: Authenticated User as raptor admin role
+    Given I am on "user/login"
     Then I fill in "username" as "raptor.admin"
     Then I fill in password "password" as "1234"
     Then I press button "Log in"

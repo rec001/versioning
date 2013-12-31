@@ -4,25 +4,12 @@ Feature: 100-Create features for Versioning project
   I need to be able login and create content.
 
   @javascript @insulated
-  Scenario: Authenticated User as admin role
+  Scenario: Authenticated User as admin, raptor admin and raptor editor role
     Then I log on as "admin"
     Then I should be redirected to "users/admin"
-    Then I click "Add content"
-    Then I should be redirected to "node/add/raptor-article"
-    Then I fill in "title" as "Base Article pointing to self"
-    Then I select "1.3.6" from "Min Version"
-    Then I select "2.5.4" from "Max Version"
-    Then I select "Raptor" from "Platform"
-    Then I press button "Save"
     Then I click "Content summary"
     Then I should be redirected to "content-summary"
-    Then I click "Base Article pointing to self"
-    Then I should be redirected to "raptor/article/base-article-pointing-self"
-    Then I should see "Base Article"
-    Then I click "Base Article pointing to self"
-    Then I should be redirected to "raptor/article/base-article-pointing-self"
-    Then I click "Edit"
-    Then I press button "Delete"
-    Then I press button "Delete"
+    #Then I click on the element with xpath "/html/body/div/div/div[2]/div/div[3]/div/div/div/div/table[2]/tbody/tr/td[2]/a"
+    Then I click on the element with css selector "#block-system-main .sticky-enabled table tbody tr td a"
     Then I click "Log out"
    
