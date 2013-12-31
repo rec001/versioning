@@ -28,7 +28,7 @@ class Version {
    */
   public function getNumericVersion($MAX_CHARS = 3) {
     $num_arr = array();
-    $str_number = '';
+    $str_number = $this->version;
     $string_length = strlen($this->version);
     $numbers = explode(".", $this->version);
 
@@ -60,9 +60,9 @@ class Version {
    *   array key as $key
    */
   public function getOlderVersion($min_array) {
-    arsort($min_array);
+		arsort($min_array);
     foreach ($min_array as $key => $min) {
-      if ($min < $this->version) {
+      if ($min < $this->getNumericVersion()) {
         return $key;
       }
     }
@@ -81,7 +81,7 @@ class Version {
   public function getNewerVersion($max_array) {
     asort($max_array);
     foreach ($max_array as $key => $max) {
-      if ($max > $this->version) {
+      if ($max > $this->getNumericVersion()) {
         return $max;
       }
     }

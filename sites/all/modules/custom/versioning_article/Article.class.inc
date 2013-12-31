@@ -156,7 +156,11 @@ class Article {
 
   /**
    * Function to get a list of all node which have same base article.
-   *
+   * 
+   * @sortby 
+   *   version (asc) and Min version (asc)
+   * @Contextual_filters integar $nid
+   *   current node's nid
    * @return mixed $result
    *   an associative array contains nid, node_title, and field_field_version
    */
@@ -174,7 +178,7 @@ class Article {
   /**
    * Function to get a check if there any node have global version.
    *
-   * @return integar $nid 
+   * @return integer $nid 
    *   node is of base article
    */
   public function isGlobalVersion(){
@@ -192,7 +196,7 @@ class Article {
 	/**
    * Function to get a check if there any node have defined version.
    *
-   * @return integar $nid 
+   * @return integer $nid 
    *   node is of base article
    */
   public function isDefinedHasConflictVersion(){
@@ -238,7 +242,7 @@ class Article {
  /**
    * Function to get version value from version tid.
    *
-   * @return integar $version_value 
+   * @return integer $version_value 
    *   version value;
    */
 	public function getVersionValueByTid($version_tid){
@@ -254,17 +258,20 @@ class Article {
 	/* 
 	 * Function to get all versions a article applies
 	 */
-	public function getVersions(){
+	public function getVersionsForDefined(){
 	  $version_applies = array();
 	  module_load_include('inc', 'versioning_article', 'Version.class');
-		
+		// get current node min version numeric value
 		$current_min_version = $this->getVersionValueByTid($this->getMinVersionTermId());
 		$version_class = new Version($current_min_version);
 		$current_min = $version_class->getNumericVersion();
-					
+		
+		// get current node max version numeric value			
 		$current_max_version = $this->getVersionValueByTid($this->getMaxVersionTermId());
 		$version_class = new Version($current_max_version);
 		$current_max = $version_class->getNumericVersion();
+		
+		//load all versions
 		$vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
     $terms = taxonomy_get_tree($vid);
     
@@ -277,11 +284,18 @@ class Article {
 				
 				if ($versions >= $current_min && $versions < $current_max) {
 		      $version_applies[] = $term->tid;
-		      $this->setVersions($version_applies);
+		      // set version to current node
+		      $version_applies = array_unique($version_applies);
 		    }
-			}	
+			}
+			
+			if (sizeof($version_applies)) {
+			  $this->setVersions($version_applies);
+			}
 		}
+		return $version_applies;
 	}
+	
 	
 	/**
    * Set the versions.
@@ -290,68 +304,100 @@ class Article {
    *   Term id to be set.
    */
   public function setVersions($versions_tid) {
-		if (sizeof ($versions_tid) > 0) {
+		if (sizeof($versions_tid) > 0) {
 		   foreach ($versions_tid as $key => $val) {
 				 $this->article->field_versions[LANGUAGE_NONE][$key]['tid'] = $val;
 			 }
 		}
   }
   
-  
   /* 
-	 * Function to get all global version articles and find out which articles version range
+	 * Function to get all applied versions from articles
+	 * @return array $versions
+	 *   array contains key and value as tid for versions
 	 */
-  public function getGlobalVersions() {
-		$global_versions = array();
-		$defind_versions = array();
-		$defind_versions = $this->getVersions();
+  public function getAllAppliedVersions() {
+		$versions = array();
+		$version = array('defined', 'global');
 		$base_article_list = $this->getBaseArticleNodeList();
-		$article_min = '';
-		$article_max = '';
 		if (sizeof($base_article_list) > 0) {
 			foreach ($base_article_list as $article_list) {
-				if ($article_list->field_data_field_version_field_version_value == 'global') {
+				if (in_array($article_list->field_data_field_version_field_version_value, $version)) {
 					if (sizeof ($article_list->field_field_versions) > 0){
 						foreach ($article_list->field_field_versions as $term) {
-							 $versions_tid = $term['raw']['tid'];
-							 $global_versions[] = $versions_tid;
+							 $tid = $term['raw']['tid'];
+							 $versions[$tid] = $tid;
 						  }
 						}	
 					}
 				}
 			}
-			//figure out which versions are left out
-			if (sizeof($defind_versions) > 0) {
-				$versions = array_diff($defind_versions, $global_versions);
-				$this->setVersions($versions);
-			}
+		  return $versions;
+		}
+  
+  /* 
+	 * Figure out which versions are left out from defined version
+	 * 
+	 * Get all applied versions and get all versions terms.
+	 * Figure out which version terms are left using array_diff
+	 * Now setVersions if there any result from array_diff
+	 * 
+	 * @return array $versions
+	 *   array contains key and value as versions tid
+	 */
+  public function getVersionsForGlobal() {
+		$applied_versions = $this->getAllAppliedVersions();
+		$versions = array();
+		
+		//load all versions
+		$vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
+    $terms = taxonomy_get_tree($vid);
+    
+    if (sizeof ($terms) > 0){
+		  foreach ($terms as $term) {
+			  $versions[$term->tid] = $term->tid;
+		  }
+	  }
+	  
+	  //figure out which versions are left out for current global version
+		if (sizeof($applied_versions) > 0) {
+			$versions = array_diff($versions, $applied_versions);
+			$this->setVersions($versions);
+		}
+		
+		return $versions;
 	}
-	
-	
 	/* 
 	 * Function to redirect to article based on session
-	 * @para integar session_vars
-	 *   session value as tid
+	 * @para integer session_vars
+	 *   session value as version tid
 	 */
   public function redirectBasedOnSession($session_vars) {
+		// get a list of all published nodes that have the same Base Article Id
 		$base_article_list = $this->getBaseArticleNodeList();
+		
 		module_load_include('inc', 'versioning_article', 'Version.class');
+		// default values
+		$article_min = '';
+		$article_max = '';
 		
 		if (sizeof($base_article_list) > 0) {
 			foreach ($base_article_list as $article_list) {
 				if ($article_list->field_data_field_version_field_version_value == 'defined') {
-					 $vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
+					  // load all version
+					  $vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
 						$terms = taxonomy_get_tree($vid);
+					  
 					  if (sizeof ($terms) > 0){
 							foreach ($terms as $term) {
 								  $versionClass = new Version($term->name);
 									$value = $versionClass->getNumericVersion();
-									$versions[$term->key] = $value;
-									$highest_version_number = max($versions);
-									$lowest_version_number = min($versions);
+									$versions[$term->tid] = $value;
 							}
+							$highest_version_number = max($versions);
+							$lowest_version_number = min($versions);
 					  }
-					  
+					  // get version numeric value using tid from $versions
 					  $session_var = $versions[$session_vars];
 					  
 					  if (!empty($article_list->field_field_min_version_1)) {
@@ -374,7 +420,7 @@ class Article {
 							return $article_list->nid;
 						} 
 						//  If $SESSION['version']['Raptor'] is the lowest version number, then select the node with Min Version set to None. 
-						else if ($session_var == $highest_version_number && $article_min == '') {
+						else if ($session_var == $lowest_version_number && $article_min == '') {
 							return $article_list->nid;
 						}
 			  } 
@@ -387,6 +433,94 @@ class Article {
 	 }
 	 return '';
  }
-	
+	/**
+	 * Function to validate article access
+	 * If min version is set to None, then check all the version from the lowest to one less than the max version. 
+	 * If max version is set to None, then check all version from min version to the highest version. 
+	 * If field_published of any version is checked, then return NODE_ACCESS_ALLOW. Otherwise return NODE_ACCESS_DENY.
+	 */
+	public function accessRaptorArticle(){
+	  $version_applies = array();
+	  module_load_include('inc', 'versioning_article', 'Version.class');
+		
+		//load all versions
+		$vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
+    $terms = taxonomy_get_tree($vid);
+    
+    //get version highest and lowest numeric values
+    if (sizeof ($terms) > 0){
+			$version = array();
+			foreach ($terms as $term) {
+					$versionClass = new Version($term->name);
+					$value = $versionClass->getNumericVersion();
+					$version[$term->tid] = $value;
+			}
+			$highest_version_number = max($version);
+			$lowest_version_number = min($version);
+		}
+		
+		// get current node min version numeric value
+		$current_min_version = $this->getVersionValueByTid($this->getMinVersionTermId());
+		$version_class = new Version($current_min_version);
+		$current_min = $version_class->getNumericVersion();
+		
+		
+		// get current node max version numeric value			
+		$current_max_version = $this->getVersionValueByTid($this->getMaxVersionTermId());
+		$version_class = new Version($current_max_version);
+		$current_max = $version_class->getNumericVersion();
+		
+		//one less than the max version
+		$current_max_old_version = $versionClass->getOlderVersion($version);
+		$current_max_by_one = $version[$current_max_old_version];
+					  
+    //get All Published Terms
+    $getAllPublishedTerms = $this->getAllPublishedTerms();
+    
+    if (sizeof ($terms) > 0){
+		  foreach ($terms as $term) {
+				$versions_value = $term->name;
+				$versions_tid = $term->tid;
+				$version_class = new Version($versions_value);
+		    $versions = $version_class->getNumericVersion();
+		    
+				// if version is greater than or equal to min version and less than max version.
+				if ($versions >= $current_min && $versions < $current_max) {
+		      if (in_array($versions_tid, $getAllPublishedTerms)) {
+		        return TRUE;
+				  } 
+		    } 
+		    // If min version is set to None, then check all the version from the lowest to one less than the max version. 
+		    else if ( ( $current_min == '') && ( $versions >= $lowest_version_number && $versions < $current_max_by_one)) {
+					if (in_array($versions_tid, $getAllPublishedTerms)) {
+		        return TRUE;
+				  } 
+				} 
+				// If max version is set to None, then check all version from min version to the highest version. 
+				else if ( ( $current_max == '' ) && ( $versions >= $current_min && $versions < $highest_version_number) ) {
+					if (in_array($versions_tid, $getAllPublishedTerms)) {
+		        return TRUE;
+				  } 
+				} 
+			}	
+		}
+		return $version_applies;
+	}
+	/**
+	 * Function get all published term
+	 * @return array $taxonomy_terms
+	 */
+	function getAllPublishedTerms() {
+		$taxonomy_terms = array();
+	  $query = new EntityFieldQuery();
+		$entities = $query->entityCondition('entity_type', 'taxonomy_term')
+			->entityCondition('bundle', 'raptor_versions')
+			->fieldCondition('field_published', 'value', 1, '=')
+			->execute();
+		if (!empty($entities['taxonomy_term'])) {
+			$taxonomy_terms = array_keys($entities['taxonomy_term']);
+		}
+	  return $taxonomy_terms;
+	}
 	
 }

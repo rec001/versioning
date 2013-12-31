@@ -55,6 +55,8 @@ class ArticleForm {
    *   Whether the article is being cloned or not.
    */
   public function alterArticleForm($clone = FALSE) {
+    // set a custom flag for redirect to article
+    //$this->setArticleRedirect();
     // Set the default version to be "defined" since this is a node clone.
     $this->setDefaultVersion('defined');
     if ($clone) {
@@ -142,6 +144,20 @@ class ArticleForm {
    */
   private function setDefaultVersion($value) {
     $this->form['field_version'][LANGUAGE_NONE]['#default_value'] = $value;
+  }
+  
+  /**
+   * Sets article redirect
+   * @para integer base_article_nid
+   *   node nid of base article
+   */
+  private function setArticleRedirect($base_article_nid) {
+	  $this->form_state['globalredirect'] = array(
+			'#type' => 'value',
+			'#value' => $base_article_nid,
+		);
+				// unpublished current node
+		$this->form_state['values']['status'] = 0;	
   }
 
   /**
