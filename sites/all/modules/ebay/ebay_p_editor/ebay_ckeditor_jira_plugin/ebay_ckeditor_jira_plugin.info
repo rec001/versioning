@@ -1,0 +1,7 @@
+name = eBay CKEditor Jira Plugin
+description = Provide eBay Jira Link in the CKEditor
+core = 7.x
+package = eBay Platform->Editor
+version = 7.x-0.4
+dependencies[] = ckeditor
+configure = admin/config/content/ebay_ckeditor_jira_plugin

@@ -1,0 +1,6 @@
+name = eBay CKEditor Macro
+description = Provide Info, Note and Warning Macro in CKEditor
+core = 7.x
+package = eBay Platform->Editor
+version = 7.x-0.4
+dependencies[] = ckeditor

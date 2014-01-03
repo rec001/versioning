@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * eBay CKEditor Macro
+ */
+
+/**
+ * Implements of hook_ckeditor_plugin().
+ */
+ 
+function ebay_ckeditor_macro_ckeditor_plugin() {
+  $module_path = drupal_get_path('module', 'ebay_ckeditor_macro');
+  $plugins     = array();
+
+  $plugins['ebay_ckeditor_macro'] = array(
+    'name'    => 'macro',
+    'desc'    => t('CKEditor Plugin -- Info, Note and Warning Macro'),
+    'path'    => $module_path . '/plugins/',
+    'buttons' => array(
+      'macro' => array(
+        'label' => t('Info, Note, Warning'),
+        'icon'  => 'icons/info.png',
+      ),
+    ),
+  );
+
+  return $plugins;
+}
+
+/**
+ * Implements of hook_init().
+ */
+function ebay_ckeditor_macro_init() {
+	$module_path = drupal_get_path('module', 'ebay_ckeditor_macro');
+	$options = array(
+		'type' => 'file',
+		'group' => CSS_DEFAULT,
+	);
+	
+	drupal_add_css($module_path . '/ebay_ckeditor_macro.css', $options);	
+}

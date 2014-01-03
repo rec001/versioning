@@ -1,0 +1,9 @@
+<?php
+
+require_once('ebay_ckeditor_jira_plugin.module');
+/**
+ * Implement hook_uninstall().
+ */
+function ebay_ckeditor_jira_plugin_uninstall() {
+	
+}

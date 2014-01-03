@@ -1,0 +1,7 @@
+/*
+ * The jira table has the class "jira-table"
+ * You can define your own self-contained jira table style here
+ */
+.jira-table .resolved > a:link, .jira-table .resolved > a:visited {
+    text-decoration: line-through;
+}

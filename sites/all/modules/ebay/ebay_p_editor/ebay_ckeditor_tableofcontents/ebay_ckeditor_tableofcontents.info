@@ -1,0 +1,6 @@
+name = eBay CKEditor Table of Contents
+description = Versatile system for generating Tables of Contents for fields.
+package = eBay Platform->Editor
+core = 7.x
+version = 7.x-0.4
+dependencies[] = ckeditor

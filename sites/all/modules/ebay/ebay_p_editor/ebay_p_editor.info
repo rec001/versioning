@@ -1,0 +1,12 @@
+name = eBay Platform Editor
+description = Dummy module to group all editor related modules.
+package = eBay Platform->Editor
+core = 7.x
+version = 7.x-0.4
+
+dependencies[] = ckeditor_link
+dependencies[] = imce
+dependencies[] = ebay_ckeditor_tableofcontents
+dependencies[] = ebay_ckeditor_macro
+dependencies[] = ebay_ckeditor_codeblock
+dependencies[] = ebay_ckeditor_jira_plugin

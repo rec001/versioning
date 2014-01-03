@@ -1,0 +1,7 @@
+div.editor-inline-jira {
+    background-color: rgba(40, 40, 0, 0.06);
+    border: 1px solid #DDDDDD;
+    margin: 0 2px;
+    min-height: 24px;
+    vertical-align: text-bottom;
+}

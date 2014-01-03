@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ * eBay CKEditor Code Block
+ */
+
+/**
+ * Implements of hook_ckeditor_plugin().
+ */
+function ebay_ckeditor_codeblock_ckeditor_plugin() {
+  $base_path   = '%base_path%';
+  $module_path = drupal_get_path('module', 'ebay_ckeditor_codeblock');
+  $plugins     = array();
+
+  $plugins['ebay_ckeditor_codeblock'] = array(
+    'name'    => 'pbckcode',
+    'desc'    => t('CKEditor Plugin -- PBCKCode v1.1.0'),
+    'path'    => $module_path . '/plugins/pbckcode/',
+    'buttons' => array(
+      'pbckcode' => array(
+        'label' => t('Code Block'),
+        'icon'  => 'icons/pbckcode.png',
+      ),
+    ),
+  );
+
+  return $plugins;
+}
+

@@ -1,0 +1,52 @@
+.ebay-ckeditor-macro {
+    margin: 10px 20px;
+    overflow: hidden;
+}
+
+.ebay-ckeditor-macro > table {
+    padding: 10px 10px 10px 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.ebay-ckeditor-macro table tr {
+		background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.ebay-ckeditor-macro > table > tr > td, .ebay-ckeditor-macro > table > tbody > tr > td {
+    font-size: 1em;
+    padding: 0;
+    border: medium none;
+}
+
+.ebay-ckeditor-macro > p:first-child, .ebay-ckeditor-macro > table > tr > td > *:first-child, .ebay-ckeditor-macro > table > tbody > tr > td > *:first-child {
+    margin-top: 0;
+}
+
+.ebay-ckeditor-macro > p:last-child, .ebay-ckeditor-macro > table > tr > td > *:last-child, .ebay-ckeditor-macro > table > tbody > tr > td > *:last-child {
+    margin-bottom: 0;
+}
+
+.ebay-ckeditor-macro .infoMacro {
+		background-color: #E0EFFF;
+    border-color: #9EB6D4;
+}
+
+.ebay-ckeditor-macro .noteMacro {
+		background-color: #FFFFDD;
+    border-color: #F7DF92;
+}
+
+.ebay-ckeditor-macro .warningMacro {
+		background-color: #FFE7E7;
+    border-color: #DF9898;
+}
+
+.ebay-ckeditor-macro .noteMacro, .ebay-ckeditor-macro .warningMacro, .ebay-ckeditor-macro .infoMacro {
+    border-style: solid;
+    border-width: 2px;
+    -moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		border-collapse: separate;
+}

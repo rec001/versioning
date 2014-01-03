@@ -1,0 +1,91 @@
+<?php
+/**
+ * @file
+ * eBay CKEditor Jira Plugin
+ */
+if (!defined('JIRA_CRENDENTIAL')) {
+    define('JIRA_CREDENTRIAL', 'cmFwdG9yY21zOnJhcHRvcmNtcw==');
+}
+/**
+ * Implements of hook_ckeditor_plugin().
+ */
+function ebay_ckeditor_jira_plugin_ckeditor_plugin() {
+  $module_path = drupal_get_path('module', 'ebay_ckeditor_jira_plugin');
+  $plugins     = array();
+
+  $plugins['ebay_ckeditor_jira_plugin'] = array(
+    'name'    => 'jira',
+    'desc'    => t('CKEditor Plugin -- Jira Link v0.1'),
+    'path'    => $module_path . '/plugins/',
+    'buttons' => array(
+      'jira' => array(
+        'label' => t('JIRA'),
+        'icon'  => 'icons/jira.png',
+      ),
+    ),
+  );
+
+  return $plugins;
+}
+
+/**
+ * Implements of hook_init().
+ */
+function ebay_ckeditor_jira_plugin_init() {
+	$module_path = drupal_get_path('module', 'ebay_ckeditor_jira_plugin');
+	
+	$options = array(
+		'type' => 'file',
+		'group' => CSS_DEFAULT,
+	);
+	
+	drupal_add_css($module_path . '/ebay_ckeditor_jira_plugin.css', $options);	
+}
+
+/**
+ * Implementation of hook_filter_info().
+ */
+function ebay_ckeditor_jira_plugin_filter_info() {
+  $filters['ebay_ckeditor_jira_plugin_filter'] = array(
+    'title' => t('eBay CKEditor JIRA Plugin Filter'),
+    'description' => t('Converts JIRA issue keys to JIRA issues'),
+    'prepare callback' => 'ebay_ckeditor_jira_plugin_filter_prepare',
+    'process callback' => 'ebay_ckeditor_jira_plugin_filter_process',
+  );
+  return $filters;
+}
+
+function ebay_ckeditor_jira_plugin_filter_prepare($text, $filter, $format, $langcode, $cache, $cache_id) {
+	return preg_replace_callback('#<div\s+class=\"editor-inline-jira\"\s+jql_options=\"(.*)\"\s+table_options=\"(.*)\"><img.*><span.*>(.*)<\/span><\/div>#', '_ebay_ckeditor_jira_plugin_filter_prepare', $text);
+}
+
+function _ebay_ckeditor_jira_plugin_filter_prepare($matches) {
+	return '{jira "' . $matches[1] . '" "' . $matches[2] . '"}' . $matches[3] . '{/jira}';
+}
+
+function ebay_ckeditor_jira_plugin_filter_process($text, $filter, $format, $langcode, $cache, $cache_id) {
+	return preg_replace_callback('#\{jira\s+\"(.*)\"\s+\"(.*)\"\}(.*)\{\/jira\}#', '_ebay_ckeditor_jira_plugin_filter_process', $text);
+}
+
+function _ebay_ckeditor_jira_plugin_filter_process($matches) {
+	require_once('ebay_ckeditor_jira_plugin.inc');
+    $options = array();
+    if ($matches[1] && strlen($matches[1]) > 0) {
+        $pairs = explode(',', $matches[1]);
+        foreach ($pairs as $pair) {
+            $tmp = explode('=', $pair);
+            $options[trim($tmp[0])] = trim($tmp[1]);
+        }
+    }
+    $displayOptions = array();
+    if ($matches[2] && strlen($matches[2]) > 0) {
+        $pairs = explode(',', $matches[2]);
+        foreach ($pairs as $pair) {
+            $tmp = explode('=', $pair);
+            $displayOptions[trim($tmp[0])] = trim($tmp[1]) === 'true';
+        }
+    }
+	$jiraData = EBayJiraManager::searchIssues($matches[3], JIRA_CREDENTRIAL, $options);
+	$display = EBayJiraManager::getIssuesDisplayInTable($jiraData, $displayOptions);
+	return $display;
+}

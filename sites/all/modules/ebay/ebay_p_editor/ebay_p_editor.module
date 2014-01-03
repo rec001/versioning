@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_help().
+ *
+ */
+function ebay_p_editor_help($path, $arg) {
+	switch ($path) {
+		case 'admin/help#ebay_p_editor':
+			return '<p>' . t('A dummy module to group all editor related modules') . '</p>';
+	}
+}
