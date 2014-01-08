@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite classname="behat.features" errors="0" failures="3" name="PW-480 Article Entry Form and Fields" file="/home/vishal/Dropbox/sites/pw/behat/features/task480-a.feature" tests="39" time="42.995439">
+    <testcase classname="PW-480 Article Entry Form and Fields" name="Registered User should not create articles" time="16.789861">
+    </testcase>
+    <testcase classname="PW-480 Article Entry Form and Fields" name="PW staff should be able to create content News and schedule a publish date" time="10.620353">
+        <failure message="Button with id|name|title|alt|value &quot;Save as draft&quot; not found." type="failed"><![CDATA[
+Button with id|name|title|alt|value "Save as draft" not found.
+]]></failure>
+    </testcase>
+    <testcase classname="PW-480 Article Entry Form and Fields" name="PW staff should create content News but leave published date empty and press &quot;safe as draft&quot;" time="10.264657">
+        <failure message="Button with id|name|title|alt|value &quot;Save as draft&quot; not found." type="failed"><![CDATA[
+Button with id|name|title|alt|value "Save as draft" not found.
+]]></failure>
+    </testcase>
+    <testcase classname="PW-480 Article Entry Form and Fields" name="PW staff should create content News but leave published date empty but press publish
+button and the content should get published" time="4.604594">
+        <failure message="Form field with id|name|label|value &quot;Headline&quot; not found." type="failed"><![CDATA[
+Form field with id|name|label|value "Headline" not found.
+]]></failure>
+    </testcase>
+</testsuite>

@@ -1,0 +1,13 @@
+This folder holds all the features for tasks 
+which have not been developed. As per our 
+standard operating procedure  behat test
+requirement ie 'features' will be made before hand.
+
+The reason for keeping the features here is 
+avoid unneccesary failure reports for tasks
+which we have not yet started.
+
+If you are the developer who has been assigned a
+task you should find the feature here and then move
+it to the feature folder to test it.
+

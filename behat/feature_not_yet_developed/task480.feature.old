@@ -1,0 +1,617 @@
+Feature: PW-480 Article Entry Form and Fields
+I need to check what if a registered user or pw staff user tries to create article type nodes(News, Brief, Analysis, Review,
+How-To, Advertorial, Elsewhere on The Web, Interview, Off-Hours, Press Release, Research, Whitepaper, Newsletter, Webcast)
+
+
+# Adding this comment to see if jenkins poll pulls this file or not.
+
+  @javascript
+  Scenario: Adding news content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/news"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/news"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article news1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-news1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding brief content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/brief"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/brief"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article brief1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-brief1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding analysis content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/analysis"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/analysis"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article analysis1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-analysis1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding review content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/review"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/review"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article review1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-review1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+
+  @javascript
+  Scenario: Adding How-To content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/howto"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/howto"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article howto1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-howto1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding Advertorial content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/advertorial"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/advertorial"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article advertorial1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-advertorial1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding Elsewhere on The Web content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/elsewhere-on-the-web"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/elsewhere-on-the-web"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article elsewhere on the web1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    When I fill in "Headline on Actual Article" with "test article headline"
+    When I fill in "URL To Article" with "http://www.google.com"
+    When I fill in "Name of Host Site" with "test host"
+    When I fill in "URL To Home Page of Host Site" with "http://www.yahoo.com"
+    When I fill in "Author's Name" with "test author"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-elsewhere-web1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding Interview content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/interview"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/interview"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article interview1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-interview1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+
+  @javascript
+  Scenario: Adding off-hours content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/off-hours"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/off-hours"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article off hours1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-hours1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+
+  @javascript
+  Scenario: Adding Press Release content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/press-release"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/press-release"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article press release1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-press-release1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding Research content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/research"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/research"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article research1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-research1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+  @javascript
+  Scenario: Adding Whitepaper content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/whitepaper"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/whitepaper"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article whitepaper1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-whitepaper1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+
+  @javascript
+  Scenario: Adding Newsletter content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/newsletter"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/newsletter"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article newsletter1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-newsletter1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come
+
+
+
+  @javascript
+  Scenario: Adding Webcast content
+    Given I am on "/user/login"
+    When I fill in "Username" with "vishaltest"
+    When I fill in "Password" with "sarla"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/webcast"
+    And I wait for the page to come
+    Then I should see "Access Denied"
+    Then I click "Logout"
+    Given I am on "/user/login"
+    And I wait for the page to come
+    When I fill in "Username" with "pwstaff1"
+    When I fill in "Password" with "pwstaff1"
+    Then I press button "Log in"
+    And I wait for the page to come
+    Given I am on "/node/add/webcast"
+    And I wait for the page to come
+    When I fill in "Headline" with "Article webcast1"
+    When I fill in "Summary" with "test summary"
+    When I attach the file "/home/niyas/Downloads/download.jpg" to "edit-field-article-thumbnail-graphic-und-0-upload"
+    When I fill in "edit-field-article-body-und-0-value" with "test cont"
+    Then I check "edit-field-article-primary-target-aud-und-13008"
+    Then I check "edit-field-article-primary-target-aud-und-13007"
+    Then I check "edit-field-article-primary-channel-und-13012"
+    And I select "Backend" from "Primary category"
+    And I select "Advertising" from "Secondary category"
+    Then I check "edit-field-article-contributed-conten-und-yes"
+    Then I check "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should see "Featured Graphic should be uploaded for featured articles."
+    Then I should see "Super Short Hed field is required for featured articles."
+    Then I uncheck "edit-field-article-featured-und-yes"
+    Then I press button "Save"
+    And I wait for the page to come
+    Then I should be redirected to "content/article-webcast1"
+    Then I should see "created"
+    Then I click "Logout"
+    And I wait for the page to come

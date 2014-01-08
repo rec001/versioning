@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite classname="behat.features" errors="0" failures="2" name="PW-480 Article Entry Form and Fields" file="/home/vishal/Dropbox/sites/pw/behat/features/task480-b.feature" tests="28" time="67.529081">
+    <testcase classname="PW-480 Article Entry Form and Fields" name="Registered User should not create articles" time="16.051384">
+    </testcase>
+    <testcase classname="PW-480 Article Entry Form and Fields" name="PW staff should be able to create content Brief" time="26.423001">
+        <failure message="Current page is &quot;/node/add/brief&quot;, but &quot;/news/brieftest1/brief/2013/11/27&quot; expected." type="failed"><![CDATA[
+Current page is "/node/add/brief", but "/news/brieftest1/brief/2013/11/27" expected.
+]]></failure>
+    </testcase>
+    <testcase classname="PW-480 Article Entry Form and Fields" name="PW staff should create content Brief but leave published date empty" time="25.009823">
+        <failure message="Current page is &quot;/node/add/brief&quot;, but &quot;/news/brieftest2/brief/2013/11/27&quot; expected." type="failed"><![CDATA[
+Current page is "/node/add/brief", but "/news/brieftest2/brief/2013/11/27" expected.
+]]></failure>
+    </testcase>
+</testsuite>
