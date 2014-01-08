@@ -26,5 +26,9 @@ class VersionTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($version->getNumericVersion(5), '000002300049800');
   }
 
+  public function testGetOlderVersion() {
+    $version = new Version('1.3.2');
+    $this->assertEquals();
+  }
 }
  

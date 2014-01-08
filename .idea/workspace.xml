@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33d51094-ada8-441d-bdb8-ee90e520c4e5" name="Default" comment="Reformatting code.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/config/Symfony/Component/Config" afterPath="$PROJECT_DIR$/tests/vendor/symfony/config/Symfony/Component/Config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/console/Symfony/Component/Console" afterPath="$PROJECT_DIR$/tests/vendor/symfony/console/Symfony/Component/Console" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/dependency-injection/Symfony/Component/DependencyInjection" afterPath="$PROJECT_DIR$/tests/vendor/symfony/dependency-injection/Symfony/Component/DependencyInjection" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher" afterPath="$PROJECT_DIR$/tests/vendor/symfony/event-dispatcher/Symfony/Component/EventDispatcher" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/filesystem/Symfony/Component/Filesystem" afterPath="$PROJECT_DIR$/tests/vendor/symfony/filesystem/Symfony/Component/Filesystem" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/finder/Symfony/Component/Finder" afterPath="$PROJECT_DIR$/tests/vendor/symfony/finder/Symfony/Component/Finder" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/process/Symfony/Component/Process" afterPath="$PROJECT_DIR$/tests/vendor/symfony/process/Symfony/Component/Process" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/translation/Symfony/Component/Translation" afterPath="$PROJECT_DIR$/tests/vendor/symfony/translation/Symfony/Component/Translation" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/symfony/yaml/Symfony/Component/Yaml" afterPath="$PROJECT_DIR$/tests/vendor/symfony/yaml/Symfony/Component/Yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/phpunit/phpunit" afterPath="$PROJECT_DIR$/tests/vendor/phpunit/phpunit" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/vendor/behat/sahi-client" afterPath="$PROJECT_DIR$/tests/vendor/behat/sahi-client" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module" afterPath="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -43,7 +55,7 @@
       <file leaf-file-name="results.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="23" selection-start="360" selection-end="360" vertical-scroll-proportion="-0.0" vertical-offset="120" max-vertical-offset="8985">
+            <state line="8" column="23" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="8985">
               <folding />
             </state>
           </provider>
@@ -52,16 +64,16 @@
       <file leaf-file-name="100.feature" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/features/100.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="20" selection-start="827" selection-end="827" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="510">
+            <state line="7" column="20" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="315">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="versioning_article.module" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="versioning_article.module" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="1" selection-start="4155" selection-end="4155" vertical-scroll-proportion="-18.0" vertical-offset="1383" max-vertical-offset="1905">
+            <state line="192" column="30" selection-start="6176" selection-end="6176" vertical-scroll-proportion="0.29654035" vertical-offset="2655" max-vertical-offset="8610">
               <folding />
             </state>
           </provider>
@@ -70,7 +82,7 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="270">
+            <state line="19" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="405">
               <folding />
             </state>
           </provider>
@@ -79,18 +91,52 @@
       <file leaf-file-name="Article.class.inc" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="0" selection-start="1067" selection-end="1067" vertical-scroll-proportion="11.833333" vertical-offset="1079" max-vertical-offset="2445">
-              <folding>
-                <element signature="e#7#92#0" expanded="false" />
-              </folding>
+            <state line="65" column="0" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="7980">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArticleForm.class.inc" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ArticleForm.class.inc" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="251" column="42" selection-start="7731" selection-end="7731" vertical-scroll-proportion="0.36945814" vertical-offset="3615" max-vertical-offset="4185">
+            <state line="156" column="25" selection-start="4013" selection-end="4013" vertical-scroll-proportion="63.708332" vertical-offset="3869" max-vertical-offset="4575">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VersionTest.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="585">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestCase.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/vendor/phpunit/phpunit/PHPUnit/Framework/TestCase.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="113" column="7" selection-start="3905" selection-end="3905" vertical-scroll-proportion="0.0" vertical-offset="1695" max-vertical-offset="28545">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArticleFormTest.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="28" selection-start="760" selection-end="760" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="465">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Version.class.inc" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="4" selection-start="1729" selection-end="1729" vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="1440">
               <folding />
             </state>
           </provider>
@@ -119,15 +165,15 @@
         <option value="$PROJECT_DIR$/sites/all/modules/custom/article_versioning/Article.inc" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="/private/var/folders/rz/7__xbf2j5qd2w2jcf5z8tsrh0000gn/T/ide-phpunit.php" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php" />
         <option value="$PROJECT_DIR$/tests/results.html" />
         <option value="$PROJECT_DIR$/tests/features/bootstrap/FeatureContext.php" />
         <option value="$PROJECT_DIR$/tests/features/101.feature" />
         <option value="$PROJECT_DIR$/tests/features/102.feature" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc" />
         <option value="$PROJECT_DIR$/tests/features/100.feature" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module" />
       </list>
@@ -148,15 +194,6 @@
       <path value="$PROJECT_DIR$/includes" />
       <path value="$PROJECT_DIR$/modules" />
       <path value="$PROJECT_DIR$/sites/all/modules" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
-      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
@@ -210,7 +247,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -221,6 +257,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="External Libraries" />
               <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PHP" />
+              <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedLibraryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -377,15 +417,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="Configurable.PHP.Debug" />
+    <property name="options.lastSelected" value="Configurable.PHP.PHPUnit" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/vendor/autoload.php" />
     <property name="FullScreen" value="false" />
     <property name="LayoutCode.rearrangeEntries" value="false" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
@@ -408,7 +449,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="950" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
-  <component name="RunManager" selected="PHP Web Application.localhost debug">
+  <component name="RunManager" selected="PHPUnit.localhost tests">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner directory="$PROJECT_DIR$/sites/all/modules/custom" />
       <method />
@@ -500,18 +541,18 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -532,10 +573,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="4" selection-start="1729" selection-end="1729" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1440">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="3" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="270">
@@ -546,9 +594,7 @@
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="4" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="2235">
-          <folding>
-            <element signature="e#7#92#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -575,9 +621,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135">
-          <folding />
-        </state>
+        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/article_versioning/ArticleGroup.inc">
@@ -600,9 +644,7 @@
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="8" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="2235">
-          <folding>
-            <element signature="e#7#92#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -636,9 +678,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135">
-          <folding />
-        </state>
+        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/article_versioning/IArticleGroup.inc">
@@ -666,9 +706,7 @@
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="8" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="2235">
-          <folding>
-            <element signature="e#7#92#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -686,11 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///private/var/folders/rz/7__xbf2j5qd2w2jcf5z8tsrh0000gn/T/ide-phpunit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="7680" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="40" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="435">
@@ -700,9 +733,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135">
-          <folding />
-        </state>
+        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/article_versioning/IArticle.inc">
@@ -765,18 +796,6 @@
         <state line="24" column="0" selection-start="324" selection-end="381" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="765" />
       </provider>
     </entry>
-    <entry file="file:///private/var/folders/rz/7__xbf2j5qd2w2jcf5z8tsrh0000gn/T/ide-phpunit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1190" selection-end="1190" vertical-scroll-proportion="-10.666667" vertical-offset="359" max-vertical-offset="7680" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/results.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="23" selection-start="360" selection-end="360" vertical-scroll-proportion="-0.0" vertical-offset="120" max-vertical-offset="8985">
@@ -786,81 +805,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/101.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.31177828" vertical-offset="0" max-vertical-offset="433">
-          <folding />
-        </state>
+        <state line="9" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.31177828" vertical-offset="0" max-vertical-offset="433" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/102.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="37" selection-start="495" selection-end="495" vertical-scroll-proportion="0.38106236" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
+        <state line="11" column="37" selection-start="495" selection-end="495" vertical-scroll-proportion="0.38106236" vertical-offset="0" max-vertical-offset="465" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/features/bootstrap/FeatureContext.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="23" selection-start="1355" selection-end="1355" vertical-scroll-proportion="2.1271393" vertical-offset="0" max-vertical-offset="2025">
-          <folding>
-            <element signature="e#7#184#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="58" column="23" selection-start="1355" selection-end="1355" vertical-scroll-proportion="2.1271393" vertical-offset="0" max-vertical-offset="2025" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="270">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="1" selection-start="818" selection-end="818" vertical-scroll-proportion="0.83798885" vertical-offset="0" max-vertical-offset="390">
+        <state line="19" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="405">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Article.class.inc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="0" selection-start="1067" selection-end="1067" vertical-scroll-proportion="11.833333" vertical-offset="1079" max-vertical-offset="2445">
-          <folding>
-            <element signature="e#7#92#0" expanded="false" />
-          </folding>
+        <state line="65" column="0" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="7980">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.11780105" vertical-offset="0" max-vertical-offset="382">
+        <state line="3" column="9" selection-start="87" selection-end="87" vertical-scroll-proportion="0.11780105" vertical-offset="0" max-vertical-offset="382" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/features/100.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="20" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/Version.class.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="4" selection-start="1729" selection-end="1729" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1440">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/vendor/phpunit/phpunit/PHPUnit/Framework/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="7" selection-start="3905" selection-end="3905" vertical-scroll-proportion="0.0" vertical-offset="1695" max-vertical-offset="28545">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/VersionTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="50" selection-start="492" selection-end="492" vertical-scroll-proportion="0.47244096" vertical-offset="0" max-vertical-offset="450">
+        <state line="31" column="0" selection-start="1037" selection-end="1037" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="585">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/features/100.feature">
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleFormTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="20" selection-start="827" selection-end="827" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="1" selection-start="4155" selection-end="4155" vertical-scroll-proportion="-18.0" vertical-offset="1383" max-vertical-offset="1905">
+        <state line="23" column="28" selection-start="760" selection-end="760" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="465">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/ArticleForm.class.inc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="251" column="42" selection-start="7731" selection-end="7731" vertical-scroll-proportion="0.36945814" vertical-offset="3615" max-vertical-offset="4185">
+        <state line="156" column="25" selection-start="4013" selection-end="4013" vertical-scroll-proportion="63.708332" vertical-offset="3869" max-vertical-offset="4575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/versioning_article/versioning_article.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="192" column="30" selection-start="6176" selection-end="6176" vertical-scroll-proportion="0.29654035" vertical-offset="2655" max-vertical-offset="8610">
           <folding />
         </state>
       </provider>

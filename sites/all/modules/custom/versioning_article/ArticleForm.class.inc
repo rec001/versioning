@@ -145,19 +145,20 @@ class ArticleForm {
   private function setDefaultVersion($value) {
     $this->form['field_version'][LANGUAGE_NONE]['#default_value'] = $value;
   }
-  
+
   /**
-   * Sets article redirect
-   * @para integer base_article_nid
+   * Sets article redirect.
+   *
+   * @param integer base_article_nid
    *   node nid of base article
    */
   private function setArticleRedirect($base_article_nid) {
-	  $this->form_state['globalredirect'] = array(
-			'#type' => 'value',
-			'#value' => $base_article_nid,
-		);
-				// unpublished current node
-		$this->form_state['values']['status'] = 0;	
+    $this->form_state['globalredirect'] = array(
+      '#type' => 'value',
+      '#value' => $base_article_nid,
+    );
+    // Unpublish current node
+    $this->form_state['values']['status'] = 0;
   }
 
   /**
@@ -241,16 +242,7 @@ class ArticleForm {
    *   Minimum version selected by the user. Blank if user did not select anything.
    */
   private function getSubmittedMinVersion() {
-    $min_version = '';
-    if (isset($this->form_state['values']['field_min_version']) && !empty($this->form_state['values']['field_min_version'][LANGUAGE_NONE][0])) {
-      $min_version_tid = $this->form_state['values']['field_min_version'][LANGUAGE_NONE][0]['tid'];
-      $min_version_term = taxonomy_term_load($min_version_tid);
-      if (is_object($min_version_term)) {
-        $min_version = $min_version_term->name;
-      }
-      return $min_version;
-    }
-    return $min_version;
+    return $this->getVersionMinMax('field_min_version');
   }
 
   /**
@@ -260,20 +252,14 @@ class ArticleForm {
    *   Maximum version selected by the user. Blank if user did not select anything.
    */
   private function getSubmittedMaxVersion() {
-    $max_version = '';
-    if (isset($this->form_state['values']['field_max_version']) && !empty($this->form_state['values']['field_max_version'][LANGUAGE_NONE][0])) {
-      $max_version_tid = $this->form_state['values']['field_max_version'][LANGUAGE_NONE][0]['tid'];
-      $max_version_term = taxonomy_term_load($max_version_tid);
-      if (is_object($max_version_term)) {
-        $max_version = $max_version_term->name;
-      }
-      return $max_version;
-    }
-    return $max_version;
+    return $this->getVersionMinMax('field_max_version');
   }
 
   /**
    * Add custom validate handlers to Article Clone form.
+   *
+   * @param bool $clone
+   *   TRUE if the article is being cloned and FALSE otherwise.
    */
   private function addArticleFormValidateHandlers($clone) {
     if ($clone) {
@@ -283,8 +269,31 @@ class ArticleForm {
 
   /**
    * Add custom submit handlers to Article Clone form.
+   *
+   * @param bool $clone
+   *   TRUE if the article is being cloned and FALSE otherwise.
    */
   private function addArticleFormSubmitHandlers($clone) {
-		 $this->form['actions']['submit']['#submit'][] = 'versioning_article_submithandler';
+    $this->form['actions']['submit']['#submit'][] = 'versioning_article_submithandler';
+  }
+
+  /**
+   * Returns min or max version field value.
+   *
+   * @param string $field_name
+   *   Name of the field: field_min_version or field_max_version.
+   * @return string $version
+   *   Value of the min or max version field. If it's not set, an empty string is returned.
+   */
+  private function getVersionMinMax($field_name) {
+    $version = '';
+    if (isset($this->form_state['values'][$field_name]) && !empty($this->form_state['values'][$field_name][LANGUAGE_NONE][0])) {
+      $version_tid = $this->form_state['values'][$field_name][LANGUAGE_NONE][0]['tid'];
+      $version_term = taxonomy_term_load($version_tid);
+      if (is_object($version_term)) {
+        $version = $version_term->name;
+      }
+    }
+    return $version;
   }
 }

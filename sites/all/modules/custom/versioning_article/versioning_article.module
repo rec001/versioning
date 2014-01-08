@@ -4,21 +4,10 @@
  *   Callback function for customizing article.
  */
 
-function versioning_article_init() {
-  /*$vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
-    $terms = taxonomy_get_tree($vid);
-    //print_r($terms);
-    $arr = array(1 =>'200500400', 2 => '100300600',  3 => '100210300', 4 => '100200500', 5 =>'100200450', 6 => '100200400', 7 =>'000200500', 8=> '000100200');
-     module_load_include('inc', 'versioning_article', 'Version.class');
-    $versionClass = new Version('1.2.45');
-    $min_default = $versionClass->getOlderVersion($arr);*/
-    
-}
 
-
-/*
- * Implementing hook_menu(); 
-*/
+/**
+ * Implements hook_menu().
+ */
 function versioning_article_menu() {
   $items = array();
   $items['node/%node/version'] = array(
@@ -52,7 +41,6 @@ function versioning_article_form_alter(&$form, &$form_state, $form_id) {
     }
     $form = $articleForm->getForm();
   }
-
 }
 
 /**
@@ -60,13 +48,12 @@ function versioning_article_form_alter(&$form, &$form_state, $form_id) {
  *
  * If the Version field is set to Global.
  */
-function versioning_article_submithandler($form, &$form_state){
-	$base_article_nid = '';
-	if (isset($form_state['globalredirect']['#value']) && $form_state['globalredirect']['#value']) {
-		unset($_REQUEST['destination']);
+function versioning_article_submithandler($form, &$form_state) {
+  if (isset($form_state['globalredirect']['#value']) && $form_state['globalredirect']['#value']) {
+    unset($_REQUEST['destination']);
     unset($form['#redirect']);
-		$base_article_nid = $form_state['globalredirect']['#value'];
-		$form_state['redirect'] = 'editable-versioned-articles/'.$base_article_nid;
+    $base_article_nid = $form_state['globalredirect']['#value'];
+    $form_state['redirect'] = 'editable-versioned-articles/' . $base_article_nid;
   }
 }
 
@@ -103,7 +90,7 @@ function versioning_article_node_insert($node) {
   $arg = arg();
   // If the current article is not being cloned, then set its base article id to be the same as its nid.
   if (!empty($arg[2]) && $arg[2] != 'clone') {
-    
+
     // Set the base article id to be the same as the current node id.
     $article->setBaseArticleId($node->nid);
 
@@ -128,20 +115,20 @@ function versioning_article_node_insert($node) {
 
     // Set the max version of the original node to be the min version of the new node.
     $originalArticle->setMaxVersionTermId($min_version_tid);
-    
+
     // Save the original node.
     $original_node = $originalArticle->getArticle();
     node_save($original_node);
-    
-    
+
+
     // Set the versions of the original node while creating a clone.
     $originalArticle->getVersionsForDefined();
-    
+
     // Save the original node.
     $original_node = $originalArticle->getArticle();
     node_save($original_node);
   }
-  
+
   // Set the versions of the original node while creating a clone.
   if (($original_nid = $article->getCloneFromOriginalArticleId()) && ($article->getVersionField() == 'global') &&
     $article->isPublished()
@@ -149,10 +136,10 @@ function versioning_article_node_insert($node) {
     // Get the base node.
     $original_node = node_load($original_nid);
     $originalArticle = new Article($original_node);
-    
+
     // Set versions for base node
     $originalArticle->getVersionsForGlobal();
-    
+
     // Save the original node.
     $original_node = $originalArticle->getArticle();
     node_save($original_node);
@@ -170,26 +157,26 @@ function versioning_article_node_update($node) {
 
   module_load_include('inc', 'versioning_article', 'Article.class');
   $article = new Article($node);
-  
+
   // If the new node is published and the Version field is set to Defined then
   // Take the Min Version of the new node. Set this value to be the Max version of the node that we are cloning.
   // Save the old node. This way the Min Version of the new node = Max Version of the old node.
   if (($original_nid = $article->getCloneFromOriginalArticleId()) && ($article->getVersionField() == 'defined') &&
     $article->isPublished()
   ) {
-    
+
     // Get the base node.
     $original_node = node_load($original_nid);
     $originalArticle = new Article($original_node);
-    
+
     // Set the versions of the original node while creating a clone.
     $originalArticle->getVersionsForDefined();
-    
+
     // Save the original node.
     $original_node = $originalArticle->getArticle();
     node_save($original_node);
   }
-  
+
   // Set the versions of the original node while creating a clone.
   if (($original_nid = $article->getCloneFromOriginalArticleId()) && ($article->getVersionField() == 'global') &&
     $article->isPublished()
@@ -197,10 +184,10 @@ function versioning_article_node_update($node) {
     // Get the base node.
     $original_node = node_load($original_nid);
     $originalArticle = new Article($original_node);
-    
+
     // Set versions for base node
     $originalArticle->getVersionsForGlobal();
-    
+
     // Save the original node.
     $original_node = $originalArticle->getArticle();
     node_save($original_node);
@@ -217,7 +204,7 @@ function versioning_article_node_validate($node, $form, &$form_state) {
 
   module_load_include('inc', 'versioning_article', 'Article.class');
   $article = new Article($node);
-  
+
   //If the current article being saved is unpublished then don't do anything.
   //If the Version field is set to Global, then get the base article id.
   //If the base article id is not empty and is not the same as current node id, then get all the other nodes with the same base article id.
@@ -226,23 +213,23 @@ function versioning_article_node_validate($node, $form, &$form_state) {
   $base_article_nid = '';
   if ($article->getVersionField() == 'global' && $node->status == 1) {
     if ($article->getBaseArticleId() && $article->getBaseArticleId() != $node->nid) {
-			$base_article_nid = $article->isGlobalVersion();
+      $base_article_nid = $article->isGlobalVersion();
       if ($base_article_nid) {
-				
-				//module_load_include('inc', 'versioning_article', 'ArticleForm.class');
+
+        //module_load_include('inc', 'versioning_article', 'ArticleForm.class');
         //$articleForm = new ArticleForm($form, $form_state);
-				
-				$form_state['globalredirect'] = array(
-				  '#type' => 'value',
-				  '#value' => $base_article_nid,
-				);
-				// unpublished current node
-				$form_state['values']['status'] = 0;
-			  drupal_set_message(t('A published article with global scope already exists. So we have unpublished the current article and saved it.'));
-			}
+
+        $form_state['globalredirect'] = array(
+          '#type' => 'value',
+          '#value' => $base_article_nid,
+        );
+        // unpublished current node
+        $form_state['values']['status'] = 0;
+        drupal_set_message(t('A published article with global scope already exists. So we have unpublished the current article and saved it.'));
+      }
     }
   }
-  
+
   //If the current article being saved is unpublished then don't do anything.
   //If the version field is set to Defined, then get the base article id.
   //Get all the published articles who share the same base article id and whose version field is set to Defined. 
@@ -252,15 +239,15 @@ function versioning_article_node_validate($node, $form, &$form_state) {
   //If there is a conflict, then redirect the user to /editable-versioned-articles/ after saving the article.
   if ($article->getVersionField() == 'defined' && $node->status == 1) {
     if ($article->getBaseArticleId() && $article->getBaseArticleId() != $node->nid) {
-			$base_article_nid = $article->isDefinedHasConflictVersion();
-			if($base_article_nid) {
-				$form_state['globalredirect'] = array(
-				  '#type' => 'value',
-				  '#value' => $base_article_nid,
-				);
-				// unpublished current node
-				$form_state['values']['status'] = 0;
-			  drupal_set_message(t('The version numbers of your current article conflicts with those of other articles. As a result, we have unpublished your current article.'));
+      $base_article_nid = $article->isDefinedHasConflictVersion();
+      if ($base_article_nid) {
+        $form_state['globalredirect'] = array(
+          '#type' => 'value',
+          '#value' => $base_article_nid,
+        );
+        // unpublished current node
+        $form_state['values']['status'] = 0;
+        drupal_set_message(t('The version numbers of your current article conflicts with those of other articles. As a result, we have unpublished your current article.'));
       }
     }
   }
@@ -271,21 +258,24 @@ function versioning_article_node_validate($node, $form, &$form_state) {
  * Implements hook_node_presave().
  */
 function versioning_article_node_presave($node) {
-	if ($node->type != 'raptor_article') {
+  if ($node->type != 'raptor_article') {
     return;
   }
-  
+
   module_load_include('inc', 'versioning_article', 'Article.class');
   $article = new Article($node);
-  
+
   //if the article is published and the Version field is set to Defined or Global, 
   //then find out which all versions it applies to.
   if ($node->status == 1 && $article->getVersionField() == 'defined') {
     $article->getVersionsForDefined();
-  } else if ($node->status == 1 && $article->getVersionField() == 'global') {
-		$article->getVersionsForGlobal();
-	}
-	
+  }
+  else {
+    if ($node->status == 1 && $article->getVersionField() == 'global') {
+      $article->getVersionsForGlobal();
+    }
+  }
+
 }
 
 
@@ -294,14 +284,14 @@ function versioning_article_node_presave($node) {
  *
  */
 function versioning_article_block_info() {
-	// Create an array that will hold our blocks
-	$blocks = array();
-	$blocks['session_redirect'] = array(
-		'info' => t('Session Redirect'),
-		'status' => TRUE,
+  // Create an array that will hold our blocks
+  $blocks = array();
+  $blocks['raptor_version'] = array(
+    'info' => t('Raptor Version'),
+    'status' => TRUE,
     'weight' => 0,
     'region' => -1,
-	);
+  );
   return $blocks;
 }
 
@@ -311,12 +301,12 @@ function versioning_article_block_info() {
  */
 function versioning_article_block_view($delta = '') {
   $block = array();
-	switch($delta) {
-	  case 'session_redirect':
-	    $block['subject'] = t('Min/Max Version');
-	    $block['content'] = drupal_get_form('session_redirect');
-	  break;
-	}
+  switch ($delta) {
+    case 'raptor_version':
+      $block['subject'] = t('Set Raptor Version');
+      $block['content'] = drupal_get_form('raptor_version_form');
+      break;
+  }
   return $block;
 }
 
@@ -326,9 +316,9 @@ function versioning_article_block_view($delta = '') {
  */
 function versioning_article_permission() {
   return array(
-    'access raptor article' => array(
-      'title' => t('Access Raptor Article'),
-      'description' => t('Access Raptor Article.'),
+    'access raptor articles unpublished versions' => array(
+      'title' => t('Access Raptor Articles of Unpublished Versions'),
+      'description' => t('Access raptor articles of unpublished versions.'),
     ),
   );
 }
@@ -336,102 +326,247 @@ function versioning_article_permission() {
 /**
  * Implements hook_node_access().
  */
-function versioning_article_node_access($node, $op, $account){
-	if(is_object($node)){
-		if ($node->type != 'raptor_article') {
-			return;
-		}
-		
-		module_load_include('inc', 'versioning_article', 'Article.class');
-		$article = new Article($node);
-		
-		//When $op = 'view' or 'update', look at the above permission. If the user has permission, then return NODE_ACCESS_ALLOW. 
-		if ($node->type == 'raptor_article' && ($op == 'view' || $op == 'update')) {
-				if (user_access('access raptor article')) {
-					return NODE_ACCESS_ALLOW;
-				} 
-				//If the user does not have the above permission, then check all the versions higher than or equal to min version and lower than (not equal to) max version. 
-				//If min version is set to None, then check all the versions from the lowest to one less than the max version. 
-				//If max version is set to None, then check all version from min version to the highest version. 
-				//If field_published of any version is checked, then return NODE_ACCESS_ALLOW. Otherwise return NODE_ACCESS_DENY.
-				else if ($article->accessRaptorArticle()) {
-					return NODE_ACCESS_ALLOW;
-				}
-				else {
-					return NODE_ACCESS_DENY;  
-				}
-		}
-	}
-	// For everything else, return NODE_ACCESS_IGNORE
-	return NODE_ACCESS_IGNORE;
+function versioning_article_node_access($node, $op, $account) {
+  if (is_object($node)) {
+    if ($node->type != 'raptor_article') {
+      return;
+    }
+
+    //When $op = 'view' or 'update', look at the above permission. If the user has permission, then return NODE_ACCESS_ALLOW.
+    if ($node->type == 'raptor_article' && ($op == 'view' || $op == 'update')) {
+      if (user_access('access raptor articles unpublished versions')) {
+        return NODE_ACCESS_ALLOW;
+      }
+      //If the user does not have the above permission, then check all the versions higher than or equal to min version and lower than (not equal to) max version.
+      //If min version is set to None, then check all the versions from the lowest to one less than the max version.
+      //If max version is set to None, then check all version from min version to the highest version.
+      //If field_published of any version is checked, then return NODE_ACCESS_ALLOW. Otherwise return NODE_ACCESS_DENY.
+      else {
+
+        module_load_include('inc', 'versioning_article', 'Article.class');
+        $article = new Article($node);
+
+        if ($article->accessRaptorArticle()) {
+          return NODE_ACCESS_ALLOW;
+        }
+        else {
+          return NODE_ACCESS_DENY;
+        }
+      }
+    }
+  }
+  // For everything else, return NODE_ACCESS_IGNORE
+  return NODE_ACCESS_IGNORE;
 }
 
 
 /**
- * Define the form to be returned.
+ * Form to set the default version for Raptor articles.
  *
- * Note that drupal passes in two parameters,
- * $form - which holds all of the elements of the form
- * $form_state - a special array of settings & values needed by Drupal
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form state array.
+ * @return array $form
+ *   Form array.
  */
-function session_redirect($form, &$form_state) {
-  $options = array();
-  $vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
-  $terms = taxonomy_get_tree($vid);
-  $default_value = '';
-  
-  if (sizeof ($terms) > 0){
-		foreach ($terms as $term) {
-			 $options[$term->tid] = $term->name;
-		}
-	}
-	
-	if(isset($_SESSION['version']['Raptor'])) {
-	  $default_value = $_SESSION['version']['Raptor'];
-	}
-	
+function raptor_version_form($form, &$form_state) {
+
+  list($options, $default_value) = get_raptor_versions_default();
+
+  if ($version = get_raptor_version_from_session()) {
+    $default_value = $version;
+  }
+
   $form['raptor_versions'] = array(
-	  '#type' => 'select',
+    '#type' => 'select',
     '#required' => TRUE,
-	  '#options' => $options,
-	  '#description' => t('Please select a version.'),
-	  '#default_value' => $default_value,
-	);
-	 
-	$form['submit'] = array(
-	 '#type' => 'submit',
-   '#value' => t('Submit'),
-	);
- 
+    '#options' => $options,
+    '#default_value' => $default_value,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+
   return $form;
 }
 
-
-/*
- * Define a submit funciton that drupal will
- * automatically call when submit is pressed (and all validators pass)
+/**
+ * Get the Raptor version options that are visible to the current user as well as the default one for him.
  */
-function session_redirect_submit($form, &$form_state) {
-	$_SESSION['version']['Raptor'] = $form_state['values']['raptor_versions'];
+function get_raptor_versions_default() {
+  $options = array();
+  $vid = taxonomy_vocabulary_machine_name_load("raptor_versions")->vid;
+  $terms = taxonomy_get_tree($vid, 0, NULL, TRUE);
+  $default_value = '';
+
+  // Get the options of the select dropdown.
+  if (sizeof($terms) > 0) {
+    foreach ($terms as $term) {
+      // If Raptor Version is not accessible, then skip it.
+      if (!is_raptor_version_accessible($term)) {
+        continue;
+      }
+      $options[$term->tid] = $term->name;
+
+      // Set this as the default version in case a default is not set already.
+      $default_value = $term->tid;
+    }
+  }
+  return array($options, $default_value);
 }
 
 
-/*
+/**
+ * Define a submit function that drupal will automatically call when submit is pressed (and all validators pass).
+ *
+ * @param array $form
+ *   Form array.
+ * @param array $form_state
+ *   Form state array.
+ */
+function raptor_version_form_submit($form, &$form_state) {
+  set_raptor_version_in_session($form_state['values']['raptor_versions']);
+}
+
+
+/**
  * Menu callback
- * @para $node
- *   $node as object
+ *
+ * @param stdClass $node
+ *   Node object
  */
 function nodes_versions($node) {
-	if(isset($_SESSION['version']['Raptor'])) {
-		module_load_include('inc', 'versioning_article', 'Article.class');
+  if (isset($_SESSION['version']['Raptor'])) {
+    module_load_include('inc', 'versioning_article', 'Article.class');
     $article = new Article($node);
     $session_redirect = $article->redirectBasedOnSession($_SESSION['version']['Raptor']);
-    if($session_redirect) {
-			$path = 'node/'.$session_redirect;
-		  drupal_goto($path);	
-		} else {
-			drupal_set_message('Page not found.');
-			drupal_goto();
-		}
-	}
+    if ($session_redirect) {
+      $path = 'node/' . $session_redirect;
+      drupal_goto($path);
+    }
+    else {
+      drupal_set_message('Page not found.');
+      drupal_goto();
+    }
+  }
+}
+
+
+/**
+ * Set Raptor version in the SESSION.
+ *
+ * @param string $version
+ *   Raptor version.
+ */
+function set_raptor_version_in_session($version) {
+  $_SESSION['version']['Raptor'] = $version;
+}
+
+
+/**
+ * Get the Raptor version from the SESSION.
+ *
+ * @return string $version
+ *   Raptor version.
+ */
+function get_raptor_version_from_session() {
+  $version = !empty($_SESSION['version']['Raptor']) ? $_SESSION['version']['Raptor'] : '';
+  return $version;
+}
+
+
+/**
+ * Get the default Raptor version.
+ *
+ * @return string $version
+ *   Default Raptor version.
+ */
+function get_default_raptor_version() {
+  // If the version already exists in the SESSION, return it.
+  if ($version = get_raptor_version_from_session()) {
+    // Make sure that this term is still accessible for the user.
+    $term = taxonomy_term_load($version);
+
+    // If the Raptor version is accessible, then return the version number.
+    if (is_raptor_version_accessible($term)) {
+      return $version;
+    }
+  }
+
+  // Go through all the versions and select the last one.
+  list($options, $version) = get_raptor_versions_default();
+  set_raptor_version_in_session($version);
+  return $version;
+}
+
+
+/**
+ * Returns if the Raptor version is accessible for the current user.
+ *
+ * @param object $term
+ *   Taxonomy term object corresponding to the Raptor version.
+ * @return bool $accessible
+ *   TRUE if accessible, FALSE otherwise.
+ */
+function is_raptor_version_accessible($term) {
+  // Get the Published field.
+  $field_published = field_get_items('taxonomy_term', $term, 'field_published');
+  $field_published = $field_published[0]['value'];
+  if (!$field_published) {
+    // The version is unpublished. See if the user has right to access articles of unpublished version.
+    if (!user_access('access raptor articles unpublished versions')) {
+      return FALSE;
+    }
+  }
+
+  // Version is published.
+  return TRUE;
+}
+
+
+function versioning_article_form_views_exposed_form_alter(&$form, &$form_state) {
+  if ($form['#id'] == 'views-exposed-form-search-raptor-articles-page') {
+    // Set the version options so that only the accessible ones are visible.
+    $tids = array();
+    foreach ($form['field_versions']['#options'] as $tid => $value) {
+      if (is_numeric($tid)) {
+        $tids[] = $tid;
+      }
+    }
+    // $terms will contain all the taxonomy term versions that are accessible by the current user.
+    $terms = array();
+    if (sizeof($tids)) {
+      $all_terms = taxonomy_term_load_multiple($tids);
+      foreach ($all_terms as $tid => $term) {
+        if (is_raptor_version_accessible($term)) {
+          $terms[$tid] = $term;
+        }
+      }
+    }
+    // Remove all the version terms that are not in $terms array since they are not accessible by the current user.
+    foreach ($form['field_versions']['#options'] as $tid => $value) {
+      if (is_numeric($tid)) {
+        if (!in_array($tid, array_keys($terms))) {
+          unset($form['field_versions']['#options'][$tid]);
+        }
+      }
+    }
+
+    if (empty($form_state['view']->exposed_input['field_versions'])) {
+      // Set the default value of the Versions exposed filter.
+      $version = get_default_raptor_version();
+      $form_state['input']['field_versions'] = $version;
+    }
+
+    // Add a submit handler to set the Raptor version when the form is submitted.
+    $form['#submit'][] = 'versioning_article_views_exposed_form_search_raptor_articles_page_submit';
+  }
+}
+
+function versioning_article_views_exposed_form_search_raptor_articles_page_submit($form, &$form_state) {
+  $version = $form_state['values']['field_versions'];
+  set_raptor_version_in_session($version);
 }

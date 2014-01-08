@@ -60,7 +60,7 @@ class Version {
    *   array key as $key
    */
   public function getOlderVersion($min_array) {
-		arsort($min_array);
+    arsort($min_array);
     foreach ($min_array as $key => $min) {
       if ($min < $this->getNumericVersion()) {
         return $key;
