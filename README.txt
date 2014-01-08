@@ -1,7 +1,6 @@
-
 CONTENTS OF THIS FILE
 ---------------------
-
+ *test 
  * About Drupal
  * Configuration and features
  * Installation profiles
